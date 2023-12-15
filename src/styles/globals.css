@@ -11,4 +11,5 @@
 body {
   color: var(--text-rgb);
   background-color: var(--background-rgb);
+  font-family: "Roboto", sans-serif;
 }
