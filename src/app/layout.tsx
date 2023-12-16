@@ -4,7 +4,7 @@ import Navbar from "./navbar";
 
 export const metadata: Metadata = {
   title: "Pixiol",
-  description: "Pixiol is a News Site for the AI Era.",
+  description: "Pixiol is the News Site for the AI Era.",
   icons: {
     icon: "/favicon.svg",
   },
