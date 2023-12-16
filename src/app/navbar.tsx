@@ -1,13 +1,24 @@
+"use client";
 import React from "react";
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   return (
-    <div className="flex justify-between items-center px-2">
-      {/* svg called box-arrow.svg */}
-      <img src="/box-arrow.svg" alt="box-arrow" className="w-5 h-5" />
-
-      <h1 className="font-sansita text-5xl">asd</h1>
-      <h2>Navbar</h2>
+    <div className="flex justify-between items-center px-2 border-b-2 border-white">
+      <img
+        src="/box-arrow.svg"
+        alt="box-arrow"
+        className="w-6 h-6 hover:cursor-pointer hover:opacity-50"
+        onClick={() => console.log("box-arrow")}
+      />
+      <h1 className="font-sansita text-4xl">Pixiol</h1>
+      <img
+        src="/search.svg"
+        alt="search"
+        className="w-8 h-8 hover:cursor-pointer hover:opacity-50"
+        onClick={() => console.log("search")}
+      />
     </div>
   );
-}
+};
+
+export default Navbar;

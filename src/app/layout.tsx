@@ -1,15 +1,13 @@
-import Head from "next/head";
+import { Metadata } from "next";
 import "../styles/globals.css";
 import Navbar from "./navbar";
-
-type Metadata = {
-  title: string;
-  description: string;
-};
 
 export const metadata: Metadata = {
   title: "Pixiol",
   description: "Pixiol is a News Site for the AI Era.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -18,13 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </Head>
-      <Navbar />
-      {children}
-    </>
+    <html lang="en">
+      <body>
+        <Navbar />
+        {children}
+      </body>
+    </html>
   );
 }
