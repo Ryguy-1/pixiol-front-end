@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
-import Navbar from "./navbar";
 
 export const metadata: Metadata = {
   title: "Pixiol",
@@ -17,10 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

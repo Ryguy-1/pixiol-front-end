@@ -1,11 +1,12 @@
 import React from "react";
+import ClientNavWrapper from "./(nav)/ClientNavWrapper";
 
 const IndexPage: React.FC = () => {
-  // Your code here
   return (
-    <div>
+    <>
+      <ClientNavWrapper />
       <h2>Body Here</h2>
-    </div>
+    </>
   );
 };
 
