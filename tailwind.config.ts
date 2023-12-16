@@ -7,7 +7,11 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sansita: ["Sansita One", "sans-serif"],
+      },
+    },
   },
   variants: {
     extend: {},

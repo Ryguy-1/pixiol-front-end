@@ -1,6 +1,11 @@
-import type { Metadata } from "next";
+import Head from "next/head";
 import "../styles/globals.css";
 import Navbar from "./navbar";
+
+type Metadata = {
+  title: string;
+  description: string;
+};
 
 export const metadata: Metadata = {
   title: "Pixiol",
@@ -13,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Head>
+      <Navbar />
+      {children}
+    </>
   );
 }
