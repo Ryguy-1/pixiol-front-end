@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
+import ServerNavigator from "./(nav)/(server)/ServerNavigator";
 
 export const metadata: Metadata = {
   title: "Pixiol",
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ServerNavigator />
+        {children}
+      </body>
     </html>
   );
 }

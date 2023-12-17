@@ -4,7 +4,11 @@ import NavBar from "./NavBar";
 import SideMenu from "./SideMenu";
 import { useState } from "react";
 
-const ClientNavWrapper = () => {
+interface ClientNavWrapperProps {
+  categories: string[];
+}
+
+const ClientNavWrapper: React.FC<ClientNavWrapperProps> = ({ categories }) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   const toggleSideMenu = () => setIsSideMenuOpen(!isSideMenuOpen);
@@ -12,7 +16,11 @@ const ClientNavWrapper = () => {
   return (
     <>
       <NavBar toggleSideMenu={toggleSideMenu} />
-      <SideMenu isOpen={isSideMenuOpen} toggleIsOpen={toggleSideMenu} />
+      <SideMenu
+        isOpen={isSideMenuOpen}
+        toggleIsOpen={toggleSideMenu}
+        categories={categories}
+      />
     </>
   );
 };

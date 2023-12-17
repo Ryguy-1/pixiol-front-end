@@ -4,9 +4,14 @@ import SideMenuCategory from "./SideMenuCategory";
 interface SideMenuProps {
   isOpen: boolean;
   toggleIsOpen: () => void;
+  categories: string[];
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({ isOpen, toggleIsOpen }) => {
+const SideMenu: React.FC<SideMenuProps> = ({
+  isOpen,
+  toggleIsOpen,
+  categories,
+}) => {
   return (
     <div
       className={`fixed top-0 left-0 transition-transform duration-150 ease-in-out ${
@@ -38,8 +43,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, toggleIsOpen }) => {
       </div>
       <div className="flex flex-row justify-center h-full">
         <div className="flex flex-col gap-3 w-5/6 pt-2">
-          <SideMenuCategory category="Category 1" />
-          <SideMenuCategory category="Category 2" />
+          {categories.map((category) => (
+            <SideMenuCategory key={category} category={category} />
+          ))}
         </div>
       </div>
     </div>
