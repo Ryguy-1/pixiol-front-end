@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
         sansita: ["Sansita One", "sans-serif"],
       },
     },

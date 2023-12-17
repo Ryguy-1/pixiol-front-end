@@ -7,22 +7,27 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ toggleSideMenu }) => {
   return (
-    <nav className="flex justify-between items-center px-2 border-b-2 border-white">
-      <img
-        src="/box-arrow.svg"
-        alt="box-arrow"
-        className="w-6 h-6 hover:cursor-pointer hover:opacity-50"
-        onClick={() => toggleSideMenu()}
-      />
-      <Link href="/" className="font-sansita text-4xl">
+    <nav className="flex justify-between items-center px-4 border-b-2 border-white h-20">
+      <button className="hover:opacity-50" onClick={() => toggleSideMenu()}>
+        <img
+          src="/box-arrow-white-right.svg"
+          alt="Side Bar Expand Button Image"
+          className="w-full h-full"
+        />
+      </button>
+      <Link href="/" className="font-sansita text-6xl">
         Pixiol
       </Link>
-      <img
-        src="/search.svg"
-        alt="search"
-        className="w-8 h-8 hover:cursor-pointer hover:opacity-50"
+      <button
+        className="hover:opacity-50"
         onClick={() => console.log("search")}
-      />
+      >
+        <img
+          src="/search.svg"
+          alt="Search Button Image"
+          className="w-full h-full"
+        />
+      </button>
     </nav>
   );
 };
