@@ -41,8 +41,8 @@ function extractContentfulCategoryInformation(
     }
     content += "\n";
   }
-  const imageUrl: string = (fields.featuredImage as any).fields.file
-    .url as string;
+  const imageUrl: string = ("https:" +
+    (fields.featuredImage as any).fields.file.url) as string;
   const publishDateStr = new Date(fields.publishedDate as string)
     .toISOString()
     .split("T")[0];

@@ -24,6 +24,7 @@
 }
 
 body {
-  color: var(--text-rgb);
   background-color: var(--background-rgb);
+  color: var(--text-rgb);
+  font-family: "montserrat", sans-serif;
 }

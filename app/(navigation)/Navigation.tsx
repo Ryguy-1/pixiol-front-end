@@ -6,12 +6,12 @@ import { SideMenuProvider } from "./_components/side-menu-context";
 
 const Navigation: React.FC = () => {
   return (
-    <div>
+    <header>
       <SideMenuProvider startOpen={false}>
         <NavBar />
         <SideMenu />
       </SideMenuProvider>
-    </div>
+    </header>
   );
 };
 

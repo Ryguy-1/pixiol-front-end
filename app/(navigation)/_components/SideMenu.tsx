@@ -24,9 +24,7 @@ const SideMenu: React.FC = () => {
               alt="Categories Image"
               className="w-6 h-6"
             />
-            <p className="text-white font-montserrat text-lg font-medium">
-              Categories
-            </p>
+            <p className="text-lg font-medium">Categories</p>
           </div>
           <button className="hover:opacity-50" onClick={() => toggleIsOpen()}>
             <img
