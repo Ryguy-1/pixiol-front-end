@@ -1,7 +1,8 @@
 import React from "react";
+import { Category } from "@/api/data-structures";
 
 interface SideMenuCategoryProps {
-  category?: string;
+  category?: Category;
   isPlaceHolder?: boolean;
 }
 
@@ -16,7 +17,7 @@ const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({
           isPlaceHolder ? " animate-pulse bg-gray-600" : "bg-black"
         }`}
       >
-        <h2>{category}</h2>
+        <h2>{typeof category === "undefined" ? "" : category.title}</h2>
       </button>
     </>
   );

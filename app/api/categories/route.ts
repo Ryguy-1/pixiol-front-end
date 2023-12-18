@@ -1,24 +1,8 @@
-import "server-only";
-import { createClient, EntryCollection } from "contentful";
-
-const space = process.env.CONTENTFUL_SPACE_ID;
-const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
-
-if (!space || !accessToken) {
-  throw new Error(
-    "CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN must be set"
-  );
-}
-
-const client = createClient({ space, accessToken });
-
-interface Category {
-  fields: any;
-  contentTypeId: string;
-}
+import { EntryCollection } from "contentful";
+import { ContentfulCategory, client } from "@/api/contentful";
 
 export async function GET() {
-  const entries: EntryCollection<Category> = await client.getEntries({
+  const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "category",
   });
   const titleList: string[] = entries.items.map(
