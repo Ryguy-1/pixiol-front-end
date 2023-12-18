@@ -17,9 +17,12 @@ interface Category {
   contentTypeId: string;
 }
 
-export const fetchCategories = async (): Promise<string[]> => {
+export async function GET() {
   const entries: EntryCollection<Category> = await client.getEntries({
     content_type: "category",
   });
-  return entries.items.map((item) => item.fields.title as string);
-};
+  const titleList: string[] = entries.items.map(
+    (item) => item.fields.title as string
+  );
+  return Response.json(titleList);
+}

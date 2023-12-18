@@ -1,11 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import { useSideMenu } from "./side-menu-context";
 
-interface NavBarProps {
-  toggleSideMenu: () => void;
-}
+const NavBar: React.FC = () => {
+  const [isOpen, setIsOpen] = useSideMenu();
 
-const NavBar: React.FC<NavBarProps> = ({ toggleSideMenu }) => {
+  const toggleSideMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="flex justify-between items-center px-4 border-b-2 border-white h-20">
       <button className="hover:opacity-50" onClick={() => toggleSideMenu()}>

@@ -1,24 +1,20 @@
-import React from "react";
-import SideMenuCategory from "./SideMenuCategory";
+import React, { Suspense } from "react";
+import { useSideMenu } from "./side-menu-context";
+import CategoriesSkeleton from "./CategoriesSkeleton";
+import Categories from "./Categories";
 
-interface SideMenuProps {
-  isOpen: boolean;
-  toggleIsOpen: () => void;
-  categories: string[];
-}
+const SideMenu: React.FC = () => {
+  const [isOpen, setIsOpen] = useSideMenu();
 
-const SideMenu: React.FC<SideMenuProps> = ({
-  isOpen,
-  toggleIsOpen,
-  categories,
-}) => {
+  const toggleIsOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div
-      className={`fixed top-0 left-0 transition-transform duration-150 ease-in-out ${
-        isOpen
-          ? "w-full sm:w-96 lg:max-w-screen-sm transform translate-x-0"
-          : "transform -translate-x-full"
-      } h-screen bg-gray-300 rounded-r-2xl`}
+      className={`fixed top-0 left-0 h-screen rounded-r-2xl bg-gray-300 transition duration-150 ease-in-out ${
+        isOpen ? "w-full sm:w-96 translate-x-0" : "-translate-x-full"
+      }`}
     >
       <div className="flex justify-center items-center h-20 border-b-2 border-black">
         <div className="flex justify-between items-center h-full w-5/6">
@@ -41,13 +37,9 @@ const SideMenu: React.FC<SideMenuProps> = ({
           </button>
         </div>
       </div>
-      <div className="flex flex-row justify-center h-full">
-        <div className="flex flex-col gap-3 w-5/6 pt-2">
-          {categories.map((category) => (
-            <SideMenuCategory key={category} category={category} />
-          ))}
-        </div>
-      </div>
+      <Suspense fallback={<CategoriesSkeleton />}>
+        <Categories />
+      </Suspense>
     </div>
   );
 };
