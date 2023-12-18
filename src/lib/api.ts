@@ -1,3 +1,4 @@
+import "server-only";
 import { createClient, EntryCollection } from "contentful";
 
 const space = process.env.CONTENTFUL_SPACE_ID;

@@ -11,10 +11,12 @@
   font-style: normal;
 }
 
+/* Note: May show warnings in VSCode, but are valid Tailwind directives. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles  */
 :root {
   /* Dark */
   --text-rgb: #ffffff;
