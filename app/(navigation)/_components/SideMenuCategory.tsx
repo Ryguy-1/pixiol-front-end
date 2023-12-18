@@ -12,7 +12,7 @@ const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({
   return (
     <>
       <button
-        className={`flex flex-row justify-center items-center w-5/6 h-10 rounded-xl ${
+        className={`shrink-0 flex flex-row justify-center items-center w-5/6 h-10 rounded-xl ${
           isPlaceHolder ? " animate-pulse bg-gray-600" : "bg-black"
         }`}
       >

@@ -12,7 +12,7 @@ const Categories: React.FC = async () => {
   const categories = (await fetchCategories()) as string[];
 
   return (
-    <div className="flex flex-col justify-start items-center gap-3 h-full w-full pt-5">
+    <div className="flex flex-col justify-start items-center gap-3 h-full w-full py-5 overflow-y-auto max-h-full">
       {categories.map((category) => (
         <SideMenuCategory key={category} category={category} />
       ))}
