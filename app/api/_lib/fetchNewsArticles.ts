@@ -1,6 +1,6 @@
 import { Entry, EntryCollection } from "contentful";
 import { ContentfulCategory, client } from "@/api/contentful";
-import { NewsArticle } from "../data-structures";
+import { NewsArticle } from "@/api/data-structures";
 
 export async function fetchArticleById(
   articleId: string
