@@ -1,7 +1,7 @@
 import React from "react";
 import { fetchMostRecentArticles } from "@/api/_lib/fetchNewsArticles";
-import BigArticle from "./_components/BigArticle";
-import LongArticle from "./_components/LongArticle";
+import BigArticle from "../_components/BigArticle";
+import LongArticle from "../_components/LongArticle";
 
 const HomePage: React.FC = async () => {
   const mostRecentArticles = await fetchMostRecentArticles(10);

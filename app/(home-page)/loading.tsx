@@ -1,6 +1,6 @@
 import React from "react";
-import BigArticle from "./_components/BigArticle";
-import LongArticle from "./_components/LongArticle";
+import BigArticle from "../_components/BigArticle";
+import LongArticle from "../_components/LongArticle";
 
 const SkeletonHomePage: React.FC = () => {
   return (
