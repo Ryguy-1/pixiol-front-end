@@ -1,14 +1,12 @@
+"use client";
 import React, { Suspense } from "react";
 import { useSideMenu } from "./side-menu-context";
 import CategoriesSkeleton from "./CategoriesSkeleton";
 import Categories from "./Categories";
+import SideMenuButtonBlackLeft from "./SideMenuButtonBlackLeft";
 
 const SideMenu: React.FC = () => {
-  const [isOpen, setIsOpen] = useSideMenu();
-
-  const toggleIsOpen = () => {
-    setIsOpen(!isOpen);
-  };
+  const [isOpen, _] = useSideMenu();
 
   return (
     <div
@@ -26,13 +24,7 @@ const SideMenu: React.FC = () => {
             />
             <p className="text-lg font-medium">Categories</p>
           </div>
-          <button className="hover:opacity-50" onClick={() => toggleIsOpen()}>
-            <img
-              src="/box-arrow-black-left.svg"
-              alt="Side Bar Expand Button Image"
-              className="w-10 h-10"
-            />
-          </button>
+          <SideMenuButtonBlackLeft />
         </div>
       </div>
       <Suspense fallback={<CategoriesSkeleton />}>

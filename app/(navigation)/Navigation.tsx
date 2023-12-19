@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import NavBar from "./_components/NavBar";
 import SideMenu from "./_components/SideMenu";
