@@ -12,7 +12,7 @@ const SideMenu: React.FC = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 flex flex-col h-screen rounded-r-2xl bg-gray-300 transition duration-150 ease-in-out ${
+      className={`fixed top-0 left-0 flex flex-col h-screen rounded-r-2xl bg-gray-300 transition duration-150 ease-in-out z-50 ${
         isOpen ? "w-full sm:w-96 translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -22,7 +22,7 @@ const SideMenu: React.FC = () => {
             <img
               src="/categories.svg"
               alt="Categories Image"
-              className="w-6 h-6"
+              className="w-5 h-5"
             />
             <p className="text-lg font-medium">Categories</p>
           </div>

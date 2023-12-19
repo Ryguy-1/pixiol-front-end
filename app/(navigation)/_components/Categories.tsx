@@ -15,7 +15,7 @@ const Categories: React.FC = async () => {
   );
 
   return (
-    <div className="flex flex-col justify-start items-center gap-3 h-full w-full py-5 overflow-y-auto max-h-full">
+    <div className="flex flex-col justify-start items-center gap-3 py-5 overflow-y-auto">
       {categories.map((category) => (
         <SideMenuCategory key={category.title} category={category} />
       ))}
