@@ -1,3 +1,4 @@
+import "server-only";
 import { Entry, EntryCollection } from "contentful";
 import { ContentfulCategory, client } from "@/api/contentful";
 import { NewsArticle } from "@/api/data-structures";

@@ -6,6 +6,7 @@ const Categories: React.FC = async () => {
   const fetchCategories = async () => {
     const res = await fetch(process.env.NEXT_PUBLIC_URL + "/api/categories", {
       method: "GET",
+      next: { revalidate: 30 }, // fixes hydration error (revalidate server-side cache to be in sync with client)
     });
     const categories = await res.json();
     return categories;

@@ -10,13 +10,15 @@ const HomePage: React.FC = async () => {
     <main className="flex justify-center">
       <div className="flex flex-col justify-center w-[75rem] max-w-[75rem] p-4">
         <section className="grid md:grid-cols-2 grid-cols-1 gap-4">
-          <BigArticle newsArticle={mostRecentArticles[0]} />
-          <BigArticle newsArticle={mostRecentArticles[1]} />
+          {mostRecentArticles.slice(0, 2).map((newsArticle) => (
+            <BigArticle key={newsArticle.id} newsArticle={newsArticle} />
+          ))}
         </section>
         <div className="border-b-2 border-white my-8"></div>
         <section className="flex flex-col gap-10">
-          <LongArticle newsArticle={mostRecentArticles[0]} />
-          <LongArticle />
+          {mostRecentArticles.slice(2).map((newsArticle) => (
+            <LongArticle key={newsArticle.id} newsArticle={newsArticle} />
+          ))}
         </section>
         <p>below</p>
       </div>
