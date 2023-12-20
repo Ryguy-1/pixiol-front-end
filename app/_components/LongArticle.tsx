@@ -4,6 +4,7 @@ import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
 import Link from "next/link";
+import LinkButton from "./LinkButton";
 
 interface LongArticleProps {
   newsArticle?: NewsArticle;
@@ -38,7 +39,10 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
   return (
     <article className="flex flex-col md:flex-row gap-4">
       <div className="flex flex-col gap-2 md:w-4/6">
-        <Link href="/" className="text-4xl font-black hover:underline">
+        <Link
+          href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`}
+          className="text-4xl font-black hover:underline"
+        >
           {title}
         </Link>
         <p>{content.slice(0, CONTENT_PREVIEW_LENGTH)}...</p>
@@ -52,11 +56,7 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
       <div className="flex flex-row md:flex-col justify-start items-start gap-4 md:w-1/6 flex-wrap">
         <Date dateString={publishDateStr} />
         <ArticleDuration durationMinutes={minRead} />
-        <div className="flex flex-row shrink-0">
-          <button className="hover:opacity-50">
-            <img src="/link.svg" alt="link" />
-          </button>
-        </div>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`} />
       </div>
 
       <div

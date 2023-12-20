@@ -4,6 +4,7 @@ import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
 import Link from "next/link";
+import LinkButton from "./LinkButton";
 
 interface BigArticleProps {
   newsArticle?: NewsArticle;
@@ -39,7 +40,10 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
         style={{ backgroundImage: `url(${imageUrl})` }}
         className="h-[18rem] bg-cover bg-center bg-no-repeat rounded-3xl"
       />
-      <Link href="/" className="text-4xl font-black hover:underline">
+      <Link
+        href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`}
+        className="text-4xl font-black hover:underline"
+      >
         {title}
       </Link>
       <p>{content.slice(0, CONTENT_PREVIEW_LENGTH)}...</p>
@@ -48,11 +52,7 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
           <Date dateString={publishDateStr} />
           <ArticleDuration durationMinutes={minRead} />
         </div>
-        <div className="flex flex-row shrink-0">
-          <button className="hover:opacity-50">
-            <img src="/link.svg" alt="link" />
-          </button>
-        </div>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`} />
       </div>
       <div className="flex flex-row gap-3 pt-3 flex-wrap">
         {tags.map((tag) => (
