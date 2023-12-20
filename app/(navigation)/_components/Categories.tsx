@@ -14,8 +14,9 @@ const Categories: React.FC = () => {
       next: { revalidate: 3600 },
     })
       .then((res) => res.json())
-      .then((categories) => {
-        setCategories(categories);
+      .then((cat) => {
+        // cat = cat.splice(0, 30); // TODO: pagination (maybe)
+        setCategories(cat);
         setIsLoading(false);
       })
       .catch((_) => {
