@@ -11,7 +11,7 @@ export default async function CategoryPage({
   let articles, category;
   try {
     category = await fetchCategoryById(params.categoryId);
-    articles = await fetchArticlesByCategory(params.categoryId);
+    articles = await fetchArticlesByCategory(params.categoryId, 30); // TODO: pagination
   } catch (error) {
     return (
       <CenterColumn maxWidthRem={60}>
