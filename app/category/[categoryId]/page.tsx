@@ -3,13 +3,16 @@ import CenterColumn from "@/_components/CenterColumn";
 import { fetchCategoryById } from "@/api/categories/route";
 import { fetchArticlesByCategory } from "@/api/articles/route";
 import LongArticle from "@/_components/LongArticle";
+import { Category, NewsArticle } from "@/api/data-structures";
 
 export default async function CategoryPage({
   params,
 }: {
   params: { categoryId: string };
 }) {
-  let articles, category;
+  let articles: NewsArticle[];
+  let category: Category;
+
   try {
     category = await fetchCategoryById(params.categoryId);
     articles = await fetchArticlesByCategory(params.categoryId, 30); // TODO: pagination
@@ -18,7 +21,7 @@ export default async function CategoryPage({
     return (
       <CenterColumn maxWidthRem={60}>
         <div className="flex flex-row justify-center">
-          <h1 className="text-4xl font-black">{`Category Id:${params.categoryId} not Found :(`}</h1>
+          <h1 className="text-4xl font-black">{`Category not Found :(`}</h1>
         </div>
       </CenterColumn>
     );

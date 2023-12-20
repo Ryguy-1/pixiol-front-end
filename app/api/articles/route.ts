@@ -15,7 +15,7 @@ export async function fetchMostRecentArticles(
 ): Promise<NewsArticle[]> {
   const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "newsArticle",
-    order: ["sys.createdAt"],
+    order: ["-sys.createdAt"],
     limit: limit,
   });
   const articleList: NewsArticle[] = entries.items.map((item) => {
@@ -31,7 +31,7 @@ export async function fetchArticlesByCategory(
   const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "newsArticle",
     "fields.categories.sys.id": categoryId,
-    order: ["sys.createdAt"],
+    order: ["-sys.createdAt"],
     limit: limit,
   });
   const articleList: NewsArticle[] = entries.items.map((item) => {

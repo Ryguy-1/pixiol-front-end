@@ -5,16 +5,17 @@ import { fetchArticleById } from "@/api/articles/route";
 import React from "react";
 import LinkButton from "@/_components/LinkButton";
 import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
+import { NewsArticle } from "@/api/data-structures";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  let article;
+  let article: NewsArticle;
   try {
     article = await fetchArticleById(params.id);
   } catch (error) {
     return (
       <CenterColumn maxWidthRem={60}>
         <div className="flex flex-row justify-center">
-          <h1 className="text-4xl font-black">{`Article Id:${params.id} not Found :(`}</h1>
+          <h1 className="text-4xl font-black">{`Article not Found :(`}</h1>
         </div>
       </CenterColumn>
     );
