@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchMostRecentArticles } from "@/api/_lib/fetchNewsArticles";
+import { fetchMostRecentArticles } from "@/api/articles/route";
 import BigArticle from "../_components/BigArticle";
 import LongArticle from "../_components/LongArticle";
 import CenterColumn from "@/_components/CenterColumn";

@@ -30,7 +30,7 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
     );
   }
 
-  const { id, title, content, imageUrl, publishDateStr, minRead, tags } =
+  const { id, title, content, imageUrl, publishDateStr, minRead, categories } =
     newsArticle;
   const CONTENT_PREVIEW_LENGTH = 145;
 
@@ -55,8 +55,8 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
         <LinkButton href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`} />
       </div>
       <div className="flex flex-row gap-3 pt-3 flex-wrap">
-        {tags.map((tag) => (
-          <ArticleCategoryTag key={tag} category={{ title: tag }} />
+        {categories.map((cat) => (
+          <ArticleCategoryTag key={cat.id} category={cat} />
         ))}
       </div>
     </article>

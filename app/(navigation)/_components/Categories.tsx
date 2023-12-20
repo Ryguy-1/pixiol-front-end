@@ -15,13 +15,11 @@ const Categories: React.FC = () => {
     })
       .then((res) => res.json())
       .then((categories) => {
-        setCategories(
-          (categories as string[]).map((category) => ({ title: category }))
-        );
+        setCategories(categories);
         setIsLoading(false);
       })
       .catch((_) => {
-        setCategories([{ title: "Error Loading Categories" }]);
+        setCategories([{ id: "-1", title: "Error" }]);
         setIsLoading(false);
       });
   }, []);

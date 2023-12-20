@@ -1,7 +1,7 @@
 import "server-only";
 import { Entry, EntryCollection } from "contentful";
 import { ContentfulCategory, client } from "@/api/contentful";
-import { NewsArticle } from "@/api/data-structures";
+import { Category, NewsArticle } from "@/api/data-structures";
 
 export async function fetchArticleById(
   articleId: string
@@ -11,10 +11,26 @@ export async function fetchArticleById(
 }
 
 export async function fetchMostRecentArticles(
-  limit: number
+  limit?: number
 ): Promise<NewsArticle[]> {
   const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "newsArticle",
+    order: ["sys.createdAt"],
+    limit: limit,
+  });
+  const articleList: NewsArticle[] = entries.items.map((item) => {
+    return extractContentfulCategoryInformation(item);
+  });
+  return articleList;
+}
+
+export async function fetchArticlesByCategory(
+  categoryId: string,
+  limit?: number
+): Promise<NewsArticle[]> {
+  const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
+    content_type: "newsArticle",
+    "fields.categories.sys.id": categoryId,
     order: ["sys.createdAt"],
     limit: limit,
   });
@@ -30,7 +46,7 @@ function extractContentfulCategoryInformation(
   const { sys } = item;
   const { fields } = item;
 
-  const id: string = sys.id; // Fix: Specify the type of id as string
+  const id: string = sys.id as string;
   const title: string = fields.title as string;
   let content: string = "";
   for (const contentNode of (fields.content as any).content) {
@@ -48,8 +64,13 @@ function extractContentfulCategoryInformation(
     .toISOString()
     .split("T")[0];
   const minRead = estimateReadingTime(content);
-  const tags = (fields.categories as any[]).map(
-    (category) => category.fields.title
+  const categories: Category[] = (fields.categories as any[]).map(
+    (category) => {
+      return {
+        id: category.sys.id as string,
+        title: category.fields.title as string,
+      };
+    }
   );
 
   return {
@@ -59,7 +80,7 @@ function extractContentfulCategoryInformation(
     imageUrl,
     publishDateStr,
     minRead,
-    tags,
+    categories,
   };
 }
 

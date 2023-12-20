@@ -1,4 +1,5 @@
 export interface Category {
+  id: string;
   title: string;
 }
 
@@ -9,5 +10,5 @@ export interface NewsArticle {
   imageUrl: string;
   publishDateStr: string;
   minRead: number;
-  tags: string[];
+  categories: Category[];
 }

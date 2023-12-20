@@ -1,7 +1,7 @@
 import Date from "@/_components/Date";
 import ArticleDuration from "@/_components/ArticleDuration";
 import CenterColumn from "@/_components/CenterColumn";
-import { fetchArticleById } from "@/api/_lib/fetchNewsArticles";
+import { fetchArticleById } from "@/api/articles/route";
 import React from "react";
 import LinkButton from "@/_components/LinkButton";
 import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
@@ -20,9 +20,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     );
   }
 
-  const { title, content, imageUrl, publishDateStr, minRead, tags } = article;
-
-  console.log(article);
+  const { title, content, imageUrl, publishDateStr, minRead, categories } = article;
 
   return (
     <main>
@@ -43,8 +41,8 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <div className="flex flex-row gap-4 flex-wrap">
-            {tags.map((tag) => (
-              <ArticleCategoryTag key={tag} category={{ title: tag }} />
+            {categories.map((cat) => (
+              <ArticleCategoryTag key={cat.id} category={cat} />
             ))}
           </div>
           <div

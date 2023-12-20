@@ -32,7 +32,7 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
     );
   }
 
-  const { id, title, content, imageUrl, publishDateStr, minRead, tags } =
+  const { id, title, content, imageUrl, publishDateStr, minRead, categories } =
     newsArticle;
   const CONTENT_PREVIEW_LENGTH = 145;
 
@@ -47,8 +47,8 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
         </Link>
         <p>{content.slice(0, CONTENT_PREVIEW_LENGTH)}...</p>
         <div className="flex flex-row gap-3 pt-3 flex-wrap">
-          {tags.map((tag) => (
-            <ArticleCategoryTag key={tag} category={{ title: tag }} />
+          {categories.map((cat) => (
+            <ArticleCategoryTag key={cat.id} category={cat} />
           ))}
         </div>
       </div>
