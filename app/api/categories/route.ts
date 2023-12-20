@@ -15,6 +15,11 @@ export async function GET(): Promise<Response> {
   return Response.json(categories);
 }
 
+export async function fetchCategoryById(categoryId: string): Promise<Category> {
+  const entry: Entry<ContentfulCategory> = await client.getEntry(categoryId);
+  return extractContentfulCategoryInformation(entry);
+}
+
 export async function fetchCategories(): Promise<Category[]> {
   const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "category",

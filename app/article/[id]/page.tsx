@@ -14,13 +14,14 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
       <CenterColumn maxWidthRem={60}>
         <div className="flex flex-row justify-center">
-          <h1 className="text-4xl font-black">{`Article #${params.id} not Found :(`}</h1>
+          <h1 className="text-4xl font-black">{`Article Id:${params.id} not Found :(`}</h1>
         </div>
       </CenterColumn>
     );
   }
 
-  const { title, content, imageUrl, publishDateStr, minRead, categories } = article;
+  const { title, content, imageUrl, publishDateStr, minRead, categories } =
+    article;
 
   return (
     <main>
