@@ -1,11 +1,20 @@
 import React from "react";
 
-const CenterColumn: React.FC<{ children: React.ReactNode }> = ({
+interface CenterColumnProps {
+  children: React.ReactNode;
+  maxWidthRem: number;
+}
+
+const CenterColumn: React.FC<CenterColumnProps> = ({
   children,
+  maxWidthRem,
 }) => {
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col justify-center w-[75rem] max-w-[75rem] p-4">
+      <div
+        style={{ width: `${maxWidthRem}rem`, maxWidth: `${maxWidthRem}rem` }}
+        className={`flex flex-col justify-center p-4`}
+      >
         {children}
       </div>
     </div>

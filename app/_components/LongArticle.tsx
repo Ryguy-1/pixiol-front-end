@@ -48,7 +48,7 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
         <p>{content.slice(0, CONTENT_PREVIEW_LENGTH)}...</p>
         <div className="flex flex-row gap-3 pt-3 flex-wrap">
           {tags.map((tag) => (
-            <ArticleCategoryTag key={tag} category={tag} />
+            <ArticleCategoryTag key={tag} category={{ title: tag }} />
           ))}
         </div>
       </div>

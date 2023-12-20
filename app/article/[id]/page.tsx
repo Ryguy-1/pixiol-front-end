@@ -3,6 +3,8 @@ import ArticleDuration from "@/_components/ArticleDuration";
 import CenterColumn from "@/_components/CenterColumn";
 import { fetchArticleById } from "@/api/_lib/fetchNewsArticles";
 import React from "react";
+import LinkButton from "@/_components/LinkButton";
+import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
 
 export default async function Page({ params }: { params: { id: string } }) {
   let article;
@@ -10,7 +12,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     article = await fetchArticleById(params.id);
   } catch (error) {
     return (
-      <CenterColumn>
+      <CenterColumn maxWidthRem={60}>
         <div className="flex flex-row justify-center">
           <h1 className="text-4xl font-black">{`Article #${params.id} not Found :(`}</h1>
         </div>
@@ -24,16 +26,36 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <main>
-      <CenterColumn>
+      <CenterColumn maxWidthRem={60}>
         <div className="flex flex-col items-start gap-5 lg:pt-20">
-          <h1 className="text-8xl font-black">{title}</h1>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black">
+            {title}
+          </h1>
           <div className="flex flex-row justify-between w-full">
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-4 flex-wrap">
               <Date dateString={publishDateStr} />
               <ArticleDuration durationMinutes={minRead} />
             </div>
-            <div></div>
+            <div>
+              <LinkButton
+                href={`${process.env.NEXT_PUBLIC_URL}/article/${params.id}`}
+              />
+            </div>
           </div>
+          <div className="flex flex-row gap-4 flex-wrap">
+            {tags.map((tag) => (
+              <ArticleCategoryTag key={tag} category={{ title: tag }} />
+            ))}
+          </div>
+          <div
+            style={{ backgroundImage: `url(${imageUrl})` }}
+            className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] bg-cover bg-center bg-no-repeat rounded-3xl"
+          />
+          {content.split("\n").map((paragraph, index) => (
+            <p key={index} className="text-2xl">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </CenterColumn>
     </main>

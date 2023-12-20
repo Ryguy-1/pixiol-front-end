@@ -9,7 +9,7 @@ const HomePage: React.FC = async () => {
 
   return (
     <main>
-      <CenterColumn>
+      <CenterColumn maxWidthRem={75}>
         <section className="grid md:grid-cols-2 grid-cols-1 gap-4">
           {mostRecentArticles.slice(0, 2).map((newsArticle) => (
             <BigArticle key={newsArticle.id} newsArticle={newsArticle} />

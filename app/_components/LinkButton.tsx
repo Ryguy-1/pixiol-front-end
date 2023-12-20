@@ -9,7 +9,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({ href }) => {
   return (
     <div className="flex flex-row shrink-0">
       <button
-        className="hover:opacity-50"
+        className="hover:opacity-50 shrink-0"
         onClick={() => navigator.clipboard.writeText(href)}
       >
         <img src="/link.svg" alt="link" />

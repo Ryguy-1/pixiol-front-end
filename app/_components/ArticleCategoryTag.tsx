@@ -1,7 +1,8 @@
+import { Category } from "@/api/data-structures";
 import React from "react";
 
 interface ArticleCategoryTagProps {
-  category: string;
+  category: Category;
 }
 
 const ArticleCategoryTag: React.FC<ArticleCategoryTagProps> = ({
@@ -9,7 +10,7 @@ const ArticleCategoryTag: React.FC<ArticleCategoryTagProps> = ({
 }) => {
   return (
     <div className="flex justify-center items-center bg-white rounded-xl px-3 py-0.5">
-      <p className="italic font-medium text-black">{category}</p>
+      <p className="italic font-medium text-black">{category.title}</p>
     </div>
   );
 };
