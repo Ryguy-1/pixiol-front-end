@@ -1,7 +1,6 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import { useSideMenu } from "./side-menu-context";
-import CategoriesSkeleton from "./CategoriesSkeleton";
 import Categories from "./Categories";
 import SideMenuButtonBlackLeft from "./SideMenuButtonBlackLeft";
 
@@ -27,9 +26,7 @@ const SideMenu: React.FC = () => {
           <SideMenuButtonBlackLeft />
         </div>
       </div>
-      <Suspense fallback={<CategoriesSkeleton />}>
-        <Categories />
-      </Suspense>
+      <Categories />
     </div>
   );
 };
