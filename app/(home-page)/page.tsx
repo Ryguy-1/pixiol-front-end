@@ -21,7 +21,6 @@ const HomePage: React.FC = async () => {
             <LongArticle key={newsArticle.id} newsArticle={newsArticle} />
           ))}
         </section>
-        <p>below</p>
       </CenterColumn>
     </main>
   );

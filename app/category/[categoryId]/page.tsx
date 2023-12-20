@@ -16,7 +16,6 @@ export default async function CategoryPage({
   try {
     category = await fetchCategoryById(params.categoryId);
     articles = await fetchArticlesByCategory(params.categoryId, 30); // TODO: pagination
-    console.log(articles);
   } catch (error) {
     return (
       <CenterColumn maxWidthRem={60}>
@@ -35,11 +34,11 @@ export default async function CategoryPage({
             {category.title}
           </h1>
           <div className="w-full border-b-2 border-gray-700" />
-          <div className="flex flex-col gap-6">
+          <section className="flex flex-col gap-6">
             {articles.map((article) => (
               <LongArticle key={article.id} newsArticle={article} />
             ))}
-          </div>
+          </section>
         </div>
       </CenterColumn>
     </main>
