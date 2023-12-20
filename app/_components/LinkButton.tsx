@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import copy from "copy-to-clipboard";
 
 interface LinkButtonProps {
   href: string;
@@ -19,7 +20,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({ href }) => {
   }, [isTooltipVisible]);
 
   const handleButtonClick = () => {
-    navigator.clipboard.writeText(href);
+    copy(href);
     setTooltipVisible(true);
   };
 
