@@ -1,11 +1,28 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { useCommandPalette } from "./command-pallet-context";
+import { useCommandPalette, Command } from "./command-pallet-context";
 
-const CommandPallet: React.FC = () => {
+const initialCommands: Command[] = [
+  {
+    name: "Test",
+    iconPath: "/favicon.svg",
+    action: () => console.log("Test Search Click"),
+  },
+  {
+    name: "Test 2",
+    iconPath: "/favicon.svg",
+    action: () => console.log("Test 2 Search Click"),
+  },
+];
+
+const CommandPalette: React.FC = () => {
   const { isOpen, setIsOpen, commands, setCommands } = useCommandPalette();
   const menuRefLarge = useRef<HTMLDivElement>(null);
   const menuRefSmall = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setCommands(commands.concat(initialCommands));
+  }, [setCommands]);
 
   useEffect(() => {
     const handleKeyShortcut = (e: KeyboardEvent) => {
@@ -67,4 +84,4 @@ const CommandPallet: React.FC = () => {
   );
 };
 
-export default CommandPallet;
+export default CommandPalette;

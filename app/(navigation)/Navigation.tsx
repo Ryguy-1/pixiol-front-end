@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./_components/NavBar";
 import SideMenu from "./_components/SideMenu";
 import { SideMenuProvider } from "./_components/side-menu-context";
-import CommandPallet from "./_components/CommandPallet";
+import CommandPalette from "./_components/CommandPalette";
 import { CommandPaletteProvider } from "./_components/command-pallet-context";
 
 const Navigation: React.FC = () => {
@@ -10,7 +10,7 @@ const Navigation: React.FC = () => {
     <header>
       <SideMenuProvider startOpen={false}>
         <CommandPaletteProvider startOpen={false}>
-          <CommandPallet />
+          <CommandPalette />
           <NavBar />
           <SideMenu />
         </CommandPaletteProvider>
