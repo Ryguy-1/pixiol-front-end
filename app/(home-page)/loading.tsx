@@ -16,7 +16,6 @@ const SkeletonHomePage: React.FC = () => {
           <LongArticle />
           <LongArticle />
         </section>
-        <p>below</p>
       </CenterColumn>
     </main>
   );
