@@ -63,12 +63,12 @@ const Search: React.FC = () => {
   const PLACEHOLDER_TEXT = "Search...";
 
   return (
-    <div ref={inputRef} className="flex flex-row gap-4 z-50">
+    <div ref={inputRef} className="flex flex-row gap-4 z-40">
       <div className="flex flex-row gap-2 items-center rounded-lg">
         <button className="hover:opacity-50 shrink-0" onClick={toggleSearch}>
           <img src="/search.svg" alt="Search Button Image" />
         </button>
-        <p className=" font-bold">Ctrl + K</p>
+        <p className="font-bold">Ctrl + K</p>
       </div>
       {/* Medium or Above Screens (Inline) */}
       <input

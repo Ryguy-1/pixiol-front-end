@@ -5,7 +5,7 @@ import LongArticle from "../_components/LongArticle";
 import CenterColumn from "@/_components/CenterColumn";
 
 const HomePage: React.FC = async () => {
-  const mostRecentArticles = await fetchMostRecentArticles(10);
+  const mostRecentArticles = await fetchMostRecentArticles(30);
 
   return (
     <main>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import SideMenuCategory from "./SideMenuCategory";
 import { Category } from "@/api/data-structures";
-import CategoriesSkeleton from "./SideMenuCategoriesListSkeleton";
+import SideMenuCategoriesListSkeleton from "./SideMenuCategoriesListSkeleton";
 
 const SideMenuCategoriesList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,13 +26,13 @@ const SideMenuCategoriesList: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return <CategoriesSkeleton />;
+    return <SideMenuCategoriesListSkeleton />;
   }
 
   return (
     <div className="flex flex-col justify-start items-center gap-3 py-5 overflow-y-auto">
       {categories.map((category) => (
-        <SideMenuCategory key={category.title} category={category} />
+        <SideMenuCategory key={category.id} category={category} />
       ))}
     </div>
   );

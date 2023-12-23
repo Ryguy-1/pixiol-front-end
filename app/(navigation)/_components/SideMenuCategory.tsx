@@ -21,7 +21,7 @@ const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({ category }) => {
   return (
     <>
       <button
-        className="shrink-0 flex flex-row justify-center items-center w-5/6 h-10 rounded-xl bg-black"
+        className="shrink-0 w-5/6 h-10 rounded-xl bg-black flex flex-row justify-center items-center"
         onClick={() => {
           router.push(`/category/${category.id}`);
           setIsOpen(false);

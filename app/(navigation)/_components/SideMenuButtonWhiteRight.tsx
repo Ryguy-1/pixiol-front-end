@@ -13,10 +13,7 @@ const SideMenuButtonWhiteRight: React.FC = () => {
       className="hover:opacity-50 shrink-0"
       onClick={() => toggleSideMenu()}
     >
-      <img
-        src="/box-arrow-white-right.svg"
-        alt="Side Bar Expand Button Image"
-      />
+      <img src="/box-arrow-white-right.svg" alt="Arrow Image" />
     </button>
   );
 };
