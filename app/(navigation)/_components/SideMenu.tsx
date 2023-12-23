@@ -25,10 +25,10 @@ const SideMenu: React.FC = () => {
   return (
     <div
       ref={menuRef}
-      className={`fixed top-0 left-0 flex flex-col h-screen w-full sm:w-96 z-50
-        rounded-r-2xl bg-gray-300 transition duration-150 ease-in-out ${
-          isOpen ? " translate-x-0" : "-translate-x-full"
-        }`}
+      className={`fixed top-0 left-0 flex flex-col h-screen w-full sm:w-96 z-50 rounded-r-2xl bg-gray-300 
+        transition duration-150 ease-in-out 
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}
+      `}
     >
       <div className="shrink-0 flex justify-center items-center h-20 border-b-2 border-black">
         <div className="flex justify-between items-center h-full w-5/6">
