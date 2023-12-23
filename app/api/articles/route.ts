@@ -40,6 +40,22 @@ export async function fetchArticlesByCategory(
   return articleList;
 }
 
+export async function fetchArticlesBySearch(
+  query: string,
+  limit?: number
+): Promise<NewsArticle[]> {
+  const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
+    content_type: "newsArticle",
+    query,
+    order: ["-sys.createdAt"],
+    limit: limit,
+  });
+  const articleList: NewsArticle[] = entries.items.map((item) => {
+    return extractContentfulCategoryInformation(item);
+  });
+  return articleList;
+}
+
 function extractContentfulCategoryInformation(
   item: Entry<ContentfulCategory>
 ): NewsArticle {

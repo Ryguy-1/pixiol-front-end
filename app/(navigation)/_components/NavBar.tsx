@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import SearchButton from "./Search";
+import Search from "./Search";
 import SideMenuButtonWhiteRight from "./SideMenuButtonWhiteRight";
 
 const NavBar: React.FC = () => {
@@ -10,7 +10,7 @@ const NavBar: React.FC = () => {
       <Link href="/" className="font-sansita text-6xl">
         Pixiol
       </Link>
-      <SearchButton />
+      <Search />
     </nav>
   );
 };

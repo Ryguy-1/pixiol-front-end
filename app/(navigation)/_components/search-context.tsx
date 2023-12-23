@@ -15,14 +15,12 @@ const SearchContext = React.createContext<SearchContextType | undefined>(
 export function SearchProvider({
   children,
   startOpen = false,
-  startText = "",
 }: {
   children: React.ReactNode;
   startOpen?: boolean;
-  startText?: string;
 }): JSX.Element {
   const [isOpen, setIsOpen] = React.useState<boolean>(startOpen);
-  const [text, setText] = React.useState<string>(startText);
+  const [text, setText] = React.useState<string>("");
 
   return (
     <SearchContext.Provider value={{ isOpen, setIsOpen, text, setText }}>

@@ -66,7 +66,7 @@ const Search: React.FC = () => {
         ${isOpen ? "border-2 w-64" : " border-0 w-0"}
         `}
       />
-      {/* Small Screens (Slide Up) */}
+      {/* Small Screens (Slide Up Input) */}
       <input
         id="searchSlideUp"
         type="text"
@@ -74,7 +74,7 @@ const Search: React.FC = () => {
         placeholder={PLACEHOLDER_TEXT}
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className={`bg-black rounded-lg border-white border-2 fixed bottom-0 left-0 block sm:hidden w-full focus:outline-none 
+        className={`fixed bottom-0 left-0 bg-black rounded-lg border-white border-2 block sm:hidden w-full focus:outline-none 
          font-medium text-white text-lg h-12 px-2
          transition-all duration-150 ease-in-out
         ${isOpen ? "translate-y-0" : "translate-y-full"}
