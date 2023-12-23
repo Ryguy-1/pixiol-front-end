@@ -1,17 +1,85 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSearch } from "./search-context";
 
 const Search: React.FC = () => {
   const { isOpen, setIsOpen, text, setText } = useSearch();
-  const toggleSearch = () => setIsOpen(!isOpen);
+  const inputRefInline = useRef<HTMLInputElement>(null);
+  const inputRefBelow = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const toggleSearch = () => {
+    setText("");
+    const startsOpen = isOpen;
+    setIsOpen(!isOpen);
+    if (startsOpen) return; // If closing, don't focus
+    if (inputRefInline.current) {
+      inputRefInline.current.focus();
+    }
+    if (inputRefBelow.current) {
+      inputRefBelow.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    const ctrlKTogglesSearch = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === "k") {
+        toggleSearch();
+        e.preventDefault();
+      }
+    };
+    const handleClickOutside = (e: MouseEvent) => {
+      if (inputRef.current && !inputRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", ctrlKTogglesSearch);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", ctrlKTogglesSearch);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, setIsOpen]);
+
+  const PLACEHOLDER_TEXT = "Search...";
 
   return (
-    <div className="flex flex-row gap-4">
-      <button className="hover:opacity-50 shrink-0" onClick={toggleSearch}>
-        <img src="/search.svg" alt="Search Button Image" />
-      </button>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
+    <div ref={inputRef} className="flex flex-row gap-4 z-50">
+      <div className="flex flex-row gap-2 items-center rounded-lg">
+        <button className="hover:opacity-50 shrink-0" onClick={toggleSearch}>
+          <img src="/search.svg" alt="Search Button Image" />
+        </button>
+        <p className=" font-bold">Ctrl + K</p>
+      </div>
+      {/* Medium or Above Screens (Inline) */}
+      <input
+        id="searchInline"
+        type="text"
+        ref={inputRefInline}
+        placeholder={PLACEHOLDER_TEXT}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className={`bg-black rounded-lg border-white hidden sm:block focus:outline-none
+         font-medium text-white text-lg px-2
+         transition-all duration-150 ease-in-out
+        ${isOpen ? "border-2 w-64" : " border-0 w-0"}
+        `}
+      />
+      {/* Small Screens (Slide Up) */}
+      <input
+        id="searchSlideUp"
+        type="text"
+        ref={inputRefBelow}
+        placeholder={PLACEHOLDER_TEXT}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className={`bg-black rounded-lg border-white border-2 fixed bottom-0 left-0 block sm:hidden w-full focus:outline-none 
+         font-medium text-white text-lg h-12 px-2
+         transition-all duration-150 ease-in-out
+        ${isOpen ? "translate-y-0" : "translate-y-full"}
+        `}
+      />
     </div>
   );
 };
