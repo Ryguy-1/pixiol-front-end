@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import SearchButton from "./SearchButton";
+import SearchButton from "./Search";
 import SideMenuButtonWhiteRight from "./SideMenuButtonWhiteRight";
 
 const NavBar: React.FC = () => {

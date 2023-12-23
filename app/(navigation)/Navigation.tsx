@@ -8,7 +8,7 @@ const Navigation: React.FC = () => {
   return (
     <header>
       <SideMenuProvider startOpen={false}>
-        <SearchProvider startOpen={false}>
+        <SearchProvider startOpen={false} startText="">
           <NavBar />
           <SideMenu />
         </SearchProvider>
