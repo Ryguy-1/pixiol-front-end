@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { useSearch } from "./search-context";
+import { useRouter } from "next/navigation";
 
 const Search: React.FC = () => {
   const { isOpen, setIsOpen, text, setText } = useSearch();
+  const router = useRouter();
   const inputRefInline = useRef<HTMLInputElement>(null);
   const inputRefBelow = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,6 +30,17 @@ const Search: React.FC = () => {
         e.preventDefault();
       }
     };
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    const handleEnter = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        router.push(`${process.env.NEXT_PUBLIC_URL}/searchresult/${text}`);
+        setIsOpen(false);
+      }
+    };
     const handleClickOutside = (e: MouseEvent) => {
       if (inputRef.current && !inputRef.current.contains(e.target as Node)) {
         setIsOpen(false);
@@ -35,12 +48,17 @@ const Search: React.FC = () => {
     };
 
     document.addEventListener("keydown", ctrlKTogglesSearch);
+    document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleEnter);
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("keydown", ctrlKTogglesSearch);
+      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleEnter);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, setIsOpen]);
+  }, [isOpen, setIsOpen, text, setText]);
 
   const PLACEHOLDER_TEXT = "Search...";
 
