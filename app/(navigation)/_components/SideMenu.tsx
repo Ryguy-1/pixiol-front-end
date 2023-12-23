@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { useSideMenu } from "./side-menu-context";
-import Categories from "./Categories";
+import Categories from "./CategoriesList";
 import SideMenuButtonBlackLeft from "./SideMenuButtonBlackLeft";
 
 const SideMenu: React.FC = () => {

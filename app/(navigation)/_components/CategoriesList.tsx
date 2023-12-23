@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SideMenuCategory from "./SideMenuCategory";
 import { Category } from "@/api/data-structures";
-import CategoriesSkeleton from "./CategoriesSkeleton";
+import CategoriesSkeleton from "./CategoriesListSkeleton";
 
-const Categories: React.FC = () => {
+const CategoriesList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,4 +38,4 @@ const Categories: React.FC = () => {
   );
 };
 
-export default Categories;
+export default CategoriesList;
