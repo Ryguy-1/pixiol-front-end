@@ -4,7 +4,7 @@ import Navigation from "./(navigation)/Navigation";
 
 export const metadata: Metadata = {
   title: "Pixiol",
-  description: "Pixiol is the News Site for the AI Era.",
+  description: "Pixiol is a News Site Ran Solely by AI.",
   icons: {
     icon: "/favicon.svg",
   },
