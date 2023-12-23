@@ -1,6 +1,7 @@
 import "@/_styles/globals.css";
 import { Metadata } from "next";
 import Navigation from "./(navigation)/Navigation";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Pixiol",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SpeedInsights />
         <Navigation />
         {children}
       </body>
