@@ -1,17 +1,34 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useSideMenu } from "./side-menu-context";
 import Categories from "./Categories";
 import SideMenuButtonBlackLeft from "./SideMenuButtonBlackLeft";
 
 const SideMenu: React.FC = () => {
-  const [isOpen, _] = useSideMenu();
+  const [isOpen, setIsOpen] = useSideMenu();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, setIsOpen]);
 
   return (
     <div
-      className={`fixed top-0 left-0 flex flex-col h-screen rounded-r-2xl bg-gray-300 transition duration-150 ease-in-out z-50 ${
-        isOpen ? "w-full sm:w-96 translate-x-0" : "-translate-x-full"
-      }`}
+      ref={menuRef}
+      className={`fixed top-0 left-0 flex flex-col h-screen w-full sm:w-96 z-50
+        rounded-r-2xl bg-gray-300 transition duration-150 ease-in-out ${
+          isOpen ? " translate-x-0" : "-translate-x-full"
+        }`}
     >
       <div className="shrink-0 flex justify-center items-center h-20 border-b-2 border-black">
         <div className="flex justify-between items-center h-full w-5/6">

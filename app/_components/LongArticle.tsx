@@ -34,13 +34,15 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
 
   const { id, title, content, imageUrl, publishDateStr, minRead, categories } =
     newsArticle;
+
   const CONTENT_PREVIEW_LENGTH = 145;
+  const REDIREDT_URL = `${process.env.NEXT_PUBLIC_URL}/article/${id}`;
 
   return (
     <article className="flex flex-col md:flex-row gap-4">
       <div className="flex flex-col gap-2 md:w-4/6">
         <Link
-          href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`}
+          href={REDIREDT_URL}
           className="text-4xl font-black hover:underline"
         >
           {title}
@@ -56,13 +58,15 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
       <div className="flex flex-row md:flex-col justify-start items-start gap-4 md:w-1/6 flex-wrap">
         <Date dateString={publishDateStr} />
         <ArticleDuration durationMinutes={minRead} />
-        <LinkButton href={`${process.env.NEXT_PUBLIC_URL}/article/${id}`} />
+        <LinkButton href={REDIREDT_URL} />
       </div>
 
-      <div
-        style={{ backgroundImage: `url(${imageUrl})` }}
-        className="bg-cover bg-center bg-no-repeat rounded-3xl md:w-2/6 hidden md:block"
-      />
+      <Link href={REDIREDT_URL} className="md:w-2/6">
+        <div
+          style={{ backgroundImage: `url(${imageUrl})` }}
+          className="bg-cover bg-center bg-no-repeat rounded-3xl h-full hidden md:block"
+        />
+      </Link>
     </article>
   );
 };
