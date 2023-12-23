@@ -1,7 +1,7 @@
 import React from "react";
 import CenterColumn from "@/_components/CenterColumn";
-import { fetchCategoryById } from "@/api/categories/route";
-import { fetchArticlesByCategory } from "@/api/articles/route";
+import { fetchCategoryById } from "@/api/categories/serverfunctions";
+import { fetchArticlesByCategory } from "@/api/articles/serverfunctions";
 import LongArticle from "@/_components/LongArticle";
 import { Category, NewsArticle } from "@/api/data-structures";
 

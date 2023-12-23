@@ -1,8 +1,8 @@
 import React from "react";
-import { fetchMostRecentArticles } from "@/api/articles/route";
+import { fetchMostRecentArticles } from "@/api/articles/serverfunctions";
 import BigArticle from "../_components/BigArticle";
 import LongArticle from "../_components/LongArticle";
-import CenterColumn from "@/_components/CenterColumn";
+import CenterColumn from "../_components/CenterColumn";
 
 const HomePage: React.FC = async () => {
   const mostRecentArticles = await fetchMostRecentArticles(30);

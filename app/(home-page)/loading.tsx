@@ -1,7 +1,7 @@
 import React from "react";
 import BigArticle from "../_components/BigArticle";
 import LongArticle from "../_components/LongArticle";
-import CenterColumn from "@/_components/CenterColumn";
+import CenterColumn from "../_components/CenterColumn";
 
 const SkeletonHomePage: React.FC = () => {
   return (

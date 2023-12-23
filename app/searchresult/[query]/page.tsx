@@ -1,6 +1,6 @@
 import React from "react";
 import CenterColumn from "@/_components/CenterColumn";
-import { fetchArticlesBySearch } from "@/api/articles/route";
+import { fetchArticlesBySearch } from "@/api/articles/serverfunctions";
 import LongArticle from "@/_components/LongArticle";
 import { NewsArticle } from "@/api/data-structures";
 

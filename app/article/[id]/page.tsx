@@ -1,8 +1,8 @@
+import React from "react";
 import Date from "@/_components/Date";
 import ArticleDuration from "@/_components/ArticleDuration";
 import CenterColumn from "@/_components/CenterColumn";
-import { fetchArticleById } from "@/api/articles/route";
-import React from "react";
+import { fetchArticleById } from "@/api/articles/serverfunctions";
 import LinkButton from "@/_components/LinkButton";
 import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
 import { NewsArticle } from "@/api/data-structures";

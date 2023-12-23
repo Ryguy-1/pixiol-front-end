@@ -58,7 +58,7 @@ const Search: React.FC = () => {
       document.removeEventListener("keydown", handleEnter);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, setIsOpen, text, setText]);
+  }, [isOpen, setIsOpen, text, setText, router, toggleSearch]);
 
   const PLACEHOLDER_TEXT = "Search...";
 
