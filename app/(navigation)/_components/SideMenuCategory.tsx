@@ -2,6 +2,7 @@
 import React from "react";
 import { Category } from "@/api/data-structures";
 import { useRouter } from "next/navigation";
+import { useSideMenu } from "./side-menu-context";
 
 interface SideMenuCategoryProps {
   category?: Category;
@@ -9,6 +10,7 @@ interface SideMenuCategoryProps {
 
 const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({ category }) => {
   const router = useRouter();
+  const [_, setIsOpen] = useSideMenu();
 
   if (!category) {
     return (
@@ -20,7 +22,10 @@ const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({ category }) => {
     <>
       <button
         className="shrink-0 flex flex-row justify-center items-center w-5/6 h-10 rounded-xl bg-black"
-        onClick={() => router.push(`/category/${category.id}`)}
+        onClick={() => {
+          router.push(`/category/${category.id}`);
+          setIsOpen(false);
+        }}
       >
         <p>{category ? category.title : ""}</p>
       </button>
