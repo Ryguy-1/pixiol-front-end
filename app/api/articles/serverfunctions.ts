@@ -4,6 +4,16 @@ import { ContentfulCategory, client } from "@/api/contentful";
 import { NewsArticle } from "@/api/data-structures";
 import { extractContentfulCategoryInformation } from "./utils";
 
+export async function fetchArticles(): Promise<NewsArticle[]> {
+  const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
+    content_type: "newsArticle",
+  });
+  const articleList: NewsArticle[] = entries.items.map((item) => {
+    return extractContentfulCategoryInformation(item);
+  });
+  return articleList;
+}
+
 export async function fetchArticleById(
   articleId: string
 ): Promise<NewsArticle> {
