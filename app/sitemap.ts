@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return {
         url: `https://www.pixiol.com/article/${article.id}`,
         lastModified: new Date(article.publishDateStr),
-        changeFrequency: "never" as const,
+        changeFrequency: "daily" as const,
         priority: 0.5,
       };
     }),
