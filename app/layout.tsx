@@ -51,13 +51,15 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
-    other: {
-      rel: "apple-touch-icon-precomposed",
-      url: "/favicon.svg",
-    },
+    icon: [{ url: "/favicon.svg" }, new URL("/favicon.svg", WEBSITE_URL)],
+    shortcut: ["/favicon.svg"],
+    apple: [{ url: "/favicon.svg" }],
+    other: [
+      {
+        rel: "apple-touch-icon-precomposed",
+        url: "/favicon.svg",
+      },
+    ],
   },
 };
 
