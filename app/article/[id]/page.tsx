@@ -109,7 +109,7 @@ export default async function Page({ params }: PageProps) {
             className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] bg-cover bg-center bg-no-repeat rounded-3xl"
           />
           <div
-            className="prose prose-invert prose-2xl"
+            className="prose prose-invert prose-lg"
             dangerouslySetInnerHTML={{ __html: processedContent }}
           />
         </div>
