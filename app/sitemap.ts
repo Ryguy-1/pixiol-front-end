@@ -18,14 +18,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return {
         url: `https://www.pixiol.com/category/${category.id}`,
         changeFrequency: "hourly" as const,
-        priority: 0.8,
+        priority: 0.3,
       };
     }),
     ...articles.map((article) => {
       return {
         url: `https://www.pixiol.com/article/${article.id}`,
         changeFrequency: "daily" as const,
-        priority: 0.5,
+        priority: 0.1,
       };
     }),
   ];
