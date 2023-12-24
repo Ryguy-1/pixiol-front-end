@@ -25,10 +25,12 @@ export async function generateMetadata(
     return parentMetadata;
   }
 
+  const MAX_DESCRIPTION_LENGTH = 100;
+
   return {
     ...parentMetadata,
     title: article.title,
-    description: article.content,
+    description: article.content.slice(0, MAX_DESCRIPTION_LENGTH),
     keywords: [
       ...article.categories.map((c) => c.title),
       ...(parentMetadata.keywords as string[]),
