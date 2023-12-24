@@ -3,12 +3,34 @@ import CenterColumn from "@/_components/CenterColumn";
 import { fetchArticlesBySearch } from "@/api/articles/serverfunctions";
 import LongArticle from "@/_components/LongArticle";
 import { NewsArticle } from "@/api/data-structures";
+import { Metadata, ResolvingMetadata } from "next";
 
-export default async function CategoryPage({
-  params,
-}: {
+interface PageProps {
   params: { query: string };
-}) {
+}
+
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentMetadata = (await parent) as Metadata;
+
+  return {
+    ...parentMetadata,
+    title: params.query,
+    description: `Search results for ${params.query}`,
+    keywords: [params.query, ...(parentMetadata.keywords as string[])],
+    openGraph: {
+      ...parentMetadata.openGraph,
+      title: params.query,
+      description: `Search results for ${params.query}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/searchresult/${params.query}`,
+      type: "website",
+    },
+  };
+}
+
+export default async function CategoryPage({ params }: PageProps) {
   let articles: NewsArticle[];
 
   try {

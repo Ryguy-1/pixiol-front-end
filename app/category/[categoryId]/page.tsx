@@ -4,6 +4,39 @@ import { fetchCategoryById } from "@/api/categories/serverfunctions";
 import { fetchArticlesByCategory } from "@/api/articles/serverfunctions";
 import LongArticle from "@/_components/LongArticle";
 import { Category, NewsArticle } from "@/api/data-structures";
+import { Metadata, ResolvingMetadata } from "next";
+
+interface PageProps {
+  params: { categoryId: string };
+}
+
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentMetadata = (await parent) as Metadata;
+
+  let category: Category;
+  try {
+    category = await fetchCategoryById(params.categoryId);
+  } catch (_) {
+    return parentMetadata;
+  }
+
+  return {
+    ...parentMetadata,
+    title: category.title,
+    description: `Search results for ${category.title}`,
+    keywords: [category.title, ...(parentMetadata.keywords as string[])],
+    openGraph: {
+      ...parentMetadata.openGraph,
+      title: category.title,
+      description: `Search results for ${category.title}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/category/${params.categoryId}`,
+      type: "website",
+    },
+  };
+}
 
 export default async function CategoryPage({
   params,
