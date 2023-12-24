@@ -9,6 +9,13 @@ const config: Config = {
         montserrat: ["Montserrat", "sans-serif"],
         sansita: ["Sansita One", "sans-serif"],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "none", // Remove max-width on all typography elements
+          },
+        },
+      },
     },
   },
   variants: {
