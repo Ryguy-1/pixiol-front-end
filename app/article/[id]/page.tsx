@@ -6,8 +6,50 @@ import { fetchArticleById } from "@/api/articles/serverfunctions";
 import LinkButton from "@/_components/LinkButton";
 import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
 import { NewsArticle } from "@/api/data-structures";
+import { Metadata, ResolvingMetadata } from "next";
 
-export default async function Page({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: { id: string };
+}
+
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentMetadata = (await parent) as Metadata;
+
+  let article: NewsArticle;
+  try {
+    article = await fetchArticleById(params.id);
+  } catch (_) {
+    return parentMetadata;
+  }
+
+  return {
+    ...parentMetadata,
+    title: article.title,
+    description: article.content,
+    keywords: [
+      ...article.categories.map((c) => c.title),
+      ...(parentMetadata.keywords as string[]),
+    ],
+    openGraph: {
+      ...parentMetadata.openGraph,
+      title: article.title,
+      description: article.content,
+      url: `${process.env.NEXT_PUBLIC_URL}/article/${params.id}`,
+      images: [
+        {
+          url: article.imageUrl,
+          alt: "Article Image",
+        },
+      ],
+      type: "article",
+    },
+  };
+}
+
+export default async function Page({ params }: PageProps) {
   let article: NewsArticle;
   try {
     article = await fetchArticleById(params.id);
