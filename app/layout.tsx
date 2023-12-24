@@ -8,6 +8,7 @@ const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
   "In-depth articles, news, and analysis on the latest trends in technology and culture.";
 const WEBSITE_URL = "https://www.pixiol.com";
+const ICON_SUBPATH = "/favicon.png";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -37,9 +38,9 @@ export const metadata: Metadata = {
     siteName: "Pixiol",
     images: [
       {
-        url: WEBSITE_URL + "/favicon.svg",
-        width: 1080,
-        height: 1080,
+        url: WEBSITE_URL + ICON_SUBPATH,
+        width: 1024,
+        height: 1024,
         alt: "Pixiol Logo",
       },
     ],
@@ -51,13 +52,13 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: [{ url: "/favicon.svg" }, new URL("/favicon.svg", WEBSITE_URL)],
-    shortcut: ["/favicon.svg"],
-    apple: [{ url: "/favicon.svg" }],
+    icon: [{ url: ICON_SUBPATH }, new URL(ICON_SUBPATH, WEBSITE_URL)],
+    shortcut: [ICON_SUBPATH],
+    apple: [{ url: ICON_SUBPATH }],
     other: [
       {
         rel: "apple-touch-icon-precomposed",
-        url: "/favicon.svg",
+        url: ICON_SUBPATH,
       },
     ],
   },
