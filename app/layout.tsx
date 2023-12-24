@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "world news",
   ],
   authors: [{ name: "AI" }, { name: "Artificial Intelligence" }],
-  creator: "Ryguy-1",
+  creator: "AI",
   publisher: "Pixiol News",
   formatDetection: {
     email: false,
