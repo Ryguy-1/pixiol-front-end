@@ -6,6 +6,8 @@ import { fetchArticleById } from "@/api/articles/serverfunctions";
 import LinkButton from "@/_components/LinkButton";
 import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
 import { NewsArticle } from "@/api/data-structures";
+import { remark } from "remark";
+import html from "remark-html";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface PageProps {
@@ -68,6 +70,17 @@ export default async function Page({ params }: PageProps) {
   const { title, content, imageUrl, publishDateStr, minRead, categories } =
     article;
 
+  const processedContent = await remark()
+    .use(html)
+    .process(content)
+    .then((c) => {
+      return c.toString();
+    })
+    .catch((_) => {
+      console.error("Error processing markdown. Defaulting to raw content.");
+      return content; // fallback to raw content
+    });
+
   return (
     <main>
       <CenterColumn maxWidthRem={60}>
@@ -95,11 +108,10 @@ export default async function Page({ params }: PageProps) {
             style={{ backgroundImage: `url(${imageUrl})` }}
             className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] bg-cover bg-center bg-no-repeat rounded-3xl"
           />
-          {content.split("\n").map((paragraph, index) => (
-            <p key={index} className="text-2xl">
-              {paragraph}
-            </p>
-          ))}
+          <div
+            className="prose lg:prose-2xl"
+            dangerouslySetInnerHTML={{ __html: processedContent }}
+          />
         </div>
       </CenterColumn>
     </main>
