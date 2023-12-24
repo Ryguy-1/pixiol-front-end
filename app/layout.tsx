@@ -4,9 +4,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 
-const TITLE = "Pixiol - News for the Modern Era, Ran by AI";
+const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
-  "In-depth articles, news, and analysis on the latest trends in technology and culture - ran by AI.";
+  "In-depth articles, news, and analysis on the latest trends in technology and culture.";
 const WEBSITE_URL = "https://www.pixiol.com";
 
 export const metadata: Metadata = {
