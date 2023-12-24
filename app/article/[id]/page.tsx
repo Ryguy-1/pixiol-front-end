@@ -38,7 +38,7 @@ export async function generateMetadata(
     openGraph: {
       ...parentMetadata.openGraph,
       title: article.title,
-      description: article.content,
+      description: article.content.slice(0, MAX_DESCRIPTION_LENGTH),
       url: `${process.env.NEXT_PUBLIC_URL}/article/${params.id}`,
       images: [
         {
