@@ -35,6 +35,10 @@ export async function generateMetadata(
       url: `${process.env.NEXT_PUBLIC_URL}/category/${params.categoryId}`,
       type: "website",
     },
+    robots: {
+      index: false,
+      follow: false,
+    },
   };
 }
 

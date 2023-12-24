@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
-  "In-depth articles, news, and analysis on the latest trends in technology and culture.";
+  "In-depth articles, news, and analysis on the latest trends in technology and culture. Pixiol uses AI to gather and summarize the latest news around the world.";
 const WEBSITE_URL = "https://www.pixiol.com";
 const ICON_SUBPATH = "/favicon.png";
 

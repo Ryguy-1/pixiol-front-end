@@ -27,6 +27,10 @@ export async function generateMetadata(
       url: `${process.env.NEXT_PUBLIC_URL}/searchresult/${params.query}`,
       type: "website",
     },
+    robots: {
+      index: false,
+      follow: false,
+    },
   };
 }
 
