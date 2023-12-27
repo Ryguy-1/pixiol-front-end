@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SideMenuCategory from "./SideMenuCategory";
-import { Category } from "@/api/data-structures";
+import { PersistedCategory } from "@/api/data-structures";
 import SideMenuCategoriesListSkeleton from "./SideMenuCategoriesListSkeleton";
 
 const SideMenuCategoriesList: React.FC = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<PersistedCategory[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {

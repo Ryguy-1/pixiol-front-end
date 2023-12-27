@@ -1,11 +1,12 @@
 import React from "react";
 import Date from "@/_components/Date";
+import { estimateReadingTime } from "@/utils";
 import ArticleDuration from "@/_components/ArticleDuration";
 import CenterColumn from "@/_components/CenterColumn";
 import { fetchArticleById } from "@/api/articles/serverfunctions";
 import LinkButton from "@/_components/LinkButton";
 import ArticleCategoryTag from "@/_components/ArticleCategoryTag";
-import { NewsArticle } from "@/api/data-structures";
+import { PersistedNewsArticle } from "@/api/data-structures";
 import { remark } from "remark";
 import html from "remark-html";
 import { Metadata, ResolvingMetadata } from "next";
@@ -20,7 +21,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const parentMetadata = (await parent) as Metadata;
 
-  let article: NewsArticle;
+  let article: PersistedNewsArticle;
   try {
     article = await fetchArticleById(params.id);
   } catch (_) {
@@ -44,7 +45,7 @@ export async function generateMetadata(
       url: `${process.env.NEXT_PUBLIC_URL}/article/${params.id}`,
       images: [
         {
-          url: article.imageUrl,
+          url: article.featuredImage.url,
           alt: "Article Image",
         },
       ],
@@ -54,7 +55,7 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: PageProps) {
-  let article: NewsArticle;
+  let article: PersistedNewsArticle;
   try {
     article = await fetchArticleById(params.id);
   } catch (error) {
@@ -67,8 +68,7 @@ export default async function Page({ params }: PageProps) {
     );
   }
 
-  const { title, content, imageUrl, publishDateStr, minRead, categories } =
-    article;
+  const { title, content, publishedDate, featuredImage, categories } = article;
 
   const processedContent = await remark()
     .use(html)
@@ -90,8 +90,8 @@ export default async function Page({ params }: PageProps) {
           </h1>
           <div className="flex flex-row justify-between w-full">
             <div className="flex flex-row gap-4 flex-wrap">
-              <Date dateString={publishDateStr} />
-              <ArticleDuration durationMinutes={minRead} />
+              <Date dateString={publishedDate} />
+              <ArticleDuration durationMinutes={estimateReadingTime(content)} />
             </div>
             <div>
               <LinkButton
@@ -105,7 +105,7 @@ export default async function Page({ params }: PageProps) {
             ))}
           </div>
           <div
-            style={{ backgroundImage: `url(${imageUrl})` }}
+            style={{ backgroundImage: `url(${featuredImage.url})` }}
             className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] bg-cover bg-center bg-no-repeat rounded-3xl"
           />
           <div

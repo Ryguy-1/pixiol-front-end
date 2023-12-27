@@ -1,49 +1,49 @@
 import "server-only";
 import { Entry } from "contentful";
 import { ContentfulCategory } from "@/api/contentful";
-import { Category, NewsArticle } from "@/api/data-structures";
+import {
+  PersistedAsset,
+  PersistedCategory,
+  PersistedNewsArticle,
+} from "@/api/data-structures";
+
+const PLACEHOLDER_STRING = "~";
 
 export function extractContentfulCategoryInformation(
   item: Entry<ContentfulCategory>
-): NewsArticle {
+): PersistedNewsArticle {
   const { sys } = item;
   const { fields } = item;
 
   const id: string = sys.id; // required string
-  const title: string = (fields.title ?? "-") as string;
-  const content: string = (fields.content ?? "-") as string;
-  const imageUrl: string = ("https:" +
-    ((fields.featuredImage as any)?.fields.file.url ?? "-")) as string;
-
-  let publishDateStr: string = (fields.publishedDate ?? "-") as string;
+  const title: string = (fields.title ?? PLACEHOLDER_STRING) as string;
+  const content: string = (fields.content ?? PLACEHOLDER_STRING) as string;
+  let publishedDate: string = (fields.publishedDate ??
+    PLACEHOLDER_STRING) as string;
   try {
-    publishDateStr = new Date(publishDateStr).toISOString().split("T")[0];
+    // try to improve the date format
+    publishedDate = new Date(publishedDate).toISOString().split("T")[0];
   } catch (e) {}
-
-  const minRead = estimateReadingTime(content);
-  const categories: Category[] = ((fields.categories as any[]) ?? []).map(
-    (category) => {
-      return {
-        id: category.sys.id as string,
-        title: category.fields.title as string,
-      };
-    }
-  );
+  const featuredImage: PersistedAsset = {
+    id: ((fields.featuredImage as any)?.sys.id ?? PLACEHOLDER_STRING) as string,
+    url: ((fields.featuredImage as any)?.fields.file.url ??
+      PLACEHOLDER_STRING) as string,
+  };
+  const categories: PersistedCategory[] = (
+    (fields.categories as any[]) ?? []
+  ).map((category) => {
+    return {
+      id: category.sys.id as string,
+      title: category.fields.title as string,
+    };
+  });
 
   return {
     id,
     title,
     content,
-    imageUrl,
-    publishDateStr,
-    minRead,
+    publishedDate,
+    featuredImage,
     categories,
   };
-}
-
-function estimateReadingTime(text: string): number {
-  const wordsPerMinute = 200;
-  const words = text.split(" ").length;
-  const minutes = words / wordsPerMinute;
-  return Math.ceil(minutes);
 }

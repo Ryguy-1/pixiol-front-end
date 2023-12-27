@@ -1,11 +1,11 @@
 import { MetadataRoute } from "next";
 import { fetchCategories } from "@/api/categories/serverfunctions";
 import { fetchArticles } from "@/api/articles/serverfunctions";
-import { Category, NewsArticle } from "@/api/data-structures";
+import { PersistedCategory, PersistedNewsArticle } from "@/api/data-structures";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const categories: Category[] = await fetchCategories();
-  const articles: NewsArticle[] = await fetchArticles();
+  const categories: PersistedCategory[] = await fetchCategories();
+  const articles: PersistedNewsArticle[] = await fetchArticles();
 
   // leave out "lastModified: new Date()"
   return [

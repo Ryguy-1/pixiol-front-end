@@ -1,8 +1,8 @@
-import { Category } from "@/api/data-structures";
+import { PersistedCategory } from "@/api/data-structures";
 import React from "react";
 
 interface ArticleCategoryTagProps {
-  category: Category;
+  category: PersistedCategory;
 }
 
 const ArticleCategoryTag: React.FC<ArticleCategoryTagProps> = ({

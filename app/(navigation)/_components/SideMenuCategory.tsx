@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import { Category } from "@/api/data-structures";
+import { PersistedCategory } from "@/api/data-structures";
 import { useRouter } from "next/navigation";
 import { useSideMenu } from "./side-menu-context";
 
 interface SideMenuCategoryProps {
-  category?: Category;
+  category?: PersistedCategory;
 }
 
 const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({ category }) => {

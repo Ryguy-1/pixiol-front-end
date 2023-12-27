@@ -2,7 +2,7 @@ import React from "react";
 import CenterColumn from "@/_components/CenterColumn";
 import { fetchArticlesBySearch } from "@/api/articles/serverfunctions";
 import LongArticle from "@/_components/LongArticle";
-import { NewsArticle } from "@/api/data-structures";
+import { PersistedNewsArticle } from "@/api/data-structures";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface PageProps {
@@ -35,7 +35,7 @@ export async function generateMetadata(
 }
 
 export default async function CategoryPage({ params }: PageProps) {
-  let articles: NewsArticle[];
+  let articles: PersistedNewsArticle[];
 
   try {
     articles = await fetchArticlesBySearch(params.query, 30); // TODO: pagination

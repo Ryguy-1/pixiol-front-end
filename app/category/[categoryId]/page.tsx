@@ -3,7 +3,7 @@ import CenterColumn from "@/_components/CenterColumn";
 import { fetchCategoryById } from "@/api/categories/serverfunctions";
 import { fetchArticlesByCategory } from "@/api/articles/serverfunctions";
 import LongArticle from "@/_components/LongArticle";
-import { Category, NewsArticle } from "@/api/data-structures";
+import { PersistedCategory, PersistedNewsArticle } from "@/api/data-structures";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface PageProps {
@@ -16,7 +16,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const parentMetadata = (await parent) as Metadata;
 
-  let category: Category;
+  let category: PersistedCategory;
   try {
     category = await fetchCategoryById(params.categoryId);
   } catch (_) {
@@ -43,8 +43,8 @@ export default async function CategoryPage({
 }: {
   params: { categoryId: string };
 }) {
-  let articles: NewsArticle[];
-  let category: Category;
+  let articles: PersistedNewsArticle[];
+  let category: PersistedCategory;
 
   try {
     category = await fetchCategoryById(params.categoryId);

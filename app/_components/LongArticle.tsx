@@ -1,5 +1,6 @@
 import React from "react";
-import { NewsArticle } from "@/api/data-structures";
+import { estimateReadingTime } from "@/utils";
+import { PersistedNewsArticle } from "@/api/data-structures";
 import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
@@ -7,7 +8,7 @@ import Link from "next/link";
 import LinkButton from "./LinkButton";
 
 interface LongArticleProps {
-  newsArticle?: NewsArticle;
+  newsArticle?: PersistedNewsArticle;
 }
 
 const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
@@ -32,7 +33,7 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
     );
   }
 
-  const { id, title, content, imageUrl, publishDateStr, minRead, categories } =
+  const { id, title, content, publishedDate, featuredImage, categories } =
     newsArticle;
 
   const CONTENT_PREVIEW_LENGTH = 145;
@@ -56,14 +57,14 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
       </div>
 
       <div className="flex flex-row md:flex-col justify-start items-start gap-4 md:w-1/6 flex-wrap">
-        <Date dateString={publishDateStr} />
-        <ArticleDuration durationMinutes={minRead} />
+        <Date dateString={publishedDate} />
+        <ArticleDuration durationMinutes={estimateReadingTime(content)} />
         <LinkButton href={REDIREDT_URL} />
       </div>
 
       <Link href={REDIREDT_URL} className="md:w-2/6">
         <div
-          style={{ backgroundImage: `url(${imageUrl})` }}
+          style={{ backgroundImage: `url(${featuredImage.url})` }}
           className="bg-cover bg-center bg-no-repeat rounded-3xl h-full hidden md:block"
         />
       </Link>

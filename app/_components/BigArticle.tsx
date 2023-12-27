@@ -1,5 +1,6 @@
 import React from "react";
-import { NewsArticle } from "@/api/data-structures";
+import { PersistedNewsArticle } from "@/api/data-structures";
+import { estimateReadingTime } from "@/utils";
 import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
@@ -7,7 +8,7 @@ import Link from "next/link";
 import LinkButton from "./LinkButton";
 
 interface BigArticleProps {
-  newsArticle?: NewsArticle;
+  newsArticle?: PersistedNewsArticle;
 }
 
 const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
@@ -30,7 +31,7 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
     );
   }
 
-  const { id, title, content, imageUrl, publishDateStr, minRead, categories } =
+  const { id, title, content, publishedDate, featuredImage, categories } =
     newsArticle;
 
   const CONTENT_PREVIEW_LENGTH = 145;
@@ -40,7 +41,7 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
     <article className="flex flex-col gap-2">
       <Link href={REDIREDT_URL}>
         <div
-          style={{ backgroundImage: `url(${imageUrl})` }}
+          style={{ backgroundImage: `url(${featuredImage.url})` }}
           className="h-[18rem] bg-cover bg-center bg-no-repeat rounded-3xl"
         />
       </Link>
@@ -50,8 +51,8 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
       <p>{content.slice(0, CONTENT_PREVIEW_LENGTH)}...</p>
       <div className="flex flex-row justify-between gap-4">
         <div className="flex flex-row gap-6 flex-wrap">
-          <Date dateString={publishDateStr} />
-          <ArticleDuration durationMinutes={minRead} />
+          <Date dateString={publishedDate} />
+          <ArticleDuration durationMinutes={estimateReadingTime(content)} />
         </div>
         <LinkButton href={REDIREDT_URL} />
       </div>

@@ -1,14 +1,18 @@
-export interface Category {
+export interface PersistedAsset {
+  id: string;
+  url: string;
+}
+
+export interface PersistedCategory {
   id: string;
   title: string;
 }
 
-export interface NewsArticle {
+export interface PersistedNewsArticle {
   id: string;
   title: string;
   content: string;
-  imageUrl: string;
-  publishDateStr: string;
-  minRead: number;
-  categories: Category[];
+  publishedDate: string;
+  featuredImage: PersistedAsset;
+  categories: PersistedCategory[];
 }
