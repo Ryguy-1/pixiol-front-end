@@ -9,16 +9,19 @@ export function extractContentfulCategoryInformation(
   const { sys } = item;
   const { fields } = item;
 
-  const id: string = sys.id as string;
-  const title: string = fields.title as string;
-  let content: string = fields.content as string;
+  const id: string = sys.id; // required string
+  const title: string = (fields.title ?? "-") as string;
+  const content: string = (fields.content ?? "-") as string;
   const imageUrl: string = ("https:" +
-    (fields.featuredImage as any).fields.file.url) as string;
-  const publishDateStr = new Date(fields.publishedDate as string)
-    .toISOString()
-    .split("T")[0];
+    ((fields.featuredImage as any)?.fields.file.url ?? "-")) as string;
+
+  let publishDateStr: string = (fields.publishedDate ?? "-") as string;
+  try {
+    publishDateStr = new Date(publishDateStr).toISOString().split("T")[0];
+  } catch (e) {}
+
   const minRead = estimateReadingTime(content);
-  const categories: Category[] = (fields.categories as any[]).map(
+  const categories: Category[] = ((fields.categories as any[]) ?? []).map(
     (category) => {
       return {
         id: category.sys.id as string,
@@ -39,7 +42,6 @@ export function extractContentfulCategoryInformation(
 }
 
 function estimateReadingTime(text: string): number {
-  if (!text) return 0;
   const wordsPerMinute = 200;
   const words = text.split(" ").length;
   const minutes = words / wordsPerMinute;

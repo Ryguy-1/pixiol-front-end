@@ -47,7 +47,7 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
       <Link href={REDIREDT_URL} className="text-4xl font-black hover:underline">
         {title}
       </Link>
-      <p>{content ? content.slice(0, CONTENT_PREVIEW_LENGTH) : ""}...</p>
+      <p>{content.slice(0, CONTENT_PREVIEW_LENGTH)}...</p>
       <div className="flex flex-row justify-between gap-4">
         <div className="flex flex-row gap-6 flex-wrap">
           <Date dateString={publishDateStr} />

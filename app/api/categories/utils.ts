@@ -8,8 +8,8 @@ export function extractContentfulCategoryInformation(
 ): Category {
   const { sys } = item;
   const { fields } = item;
-  const id: string = sys.id;
-  const title: string = fields.title as string;
+  const id: string = sys.id; // required string
+  const title: string = (fields.title ?? "-") as string;
   return {
     id,
     title,

@@ -27,7 +27,7 @@ const SideMenuCategory: React.FC<SideMenuCategoryProps> = ({ category }) => {
           setIsOpen(false);
         }}
       >
-        <p>{category ? category.title : ""}</p>
+        <p>{category.title}</p>
       </button>
     </>
   );
