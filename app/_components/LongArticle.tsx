@@ -1,5 +1,5 @@
 import React from "react";
-import { estimateReadingTime } from "@/utils";
+import { estimateReadingTime, removeMarkdown } from "@/utils";
 import { PersistedNewsArticle } from "@/api/data-structures";
 import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
@@ -33,8 +33,10 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
     );
   }
 
-  const { id, title, content, publishedDate, featuredImage, categories } =
+  let { id, title, content, publishedDate, featuredImage, categories } =
     newsArticle;
+
+  content = removeMarkdown(content);
 
   const CONTENT_PREVIEW_LENGTH = 145;
   const REDIREDT_URL = `${process.env.NEXT_PUBLIC_URL}/article/${id}`;

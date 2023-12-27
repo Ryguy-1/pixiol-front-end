@@ -1,6 +1,6 @@
 import React from "react";
 import Date from "@/_components/Date";
-import { estimateReadingTime } from "@/utils";
+import { estimateReadingTime, removeMarkdown } from "@/utils";
 import ArticleDuration from "@/_components/ArticleDuration";
 import CenterColumn from "@/_components/CenterColumn";
 import { fetchArticleById } from "@/api/articles/serverfunctions";
@@ -29,11 +29,15 @@ export async function generateMetadata(
   }
 
   const MAX_DESCRIPTION_LENGTH = 100;
+  const descriptionFromContent = removeMarkdown(article.content).slice(
+    0,
+    MAX_DESCRIPTION_LENGTH
+  );
 
   return {
     ...parentMetadata,
     title: article.title,
-    description: article.content.slice(0, MAX_DESCRIPTION_LENGTH),
+    description: descriptionFromContent,
     keywords: [
       ...article.categories.map((c) => c.title),
       ...(parentMetadata.keywords as string[]),
@@ -41,7 +45,7 @@ export async function generateMetadata(
     openGraph: {
       ...parentMetadata.openGraph,
       title: article.title,
-      description: article.content.slice(0, MAX_DESCRIPTION_LENGTH),
+      description: descriptionFromContent,
       url: `${process.env.NEXT_PUBLIC_URL}/article/${params.id}`,
       images: [
         {

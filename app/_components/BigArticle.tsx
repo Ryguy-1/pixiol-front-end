@@ -1,6 +1,6 @@
 import React from "react";
 import { PersistedNewsArticle } from "@/api/data-structures";
-import { estimateReadingTime } from "@/utils";
+import { estimateReadingTime, removeMarkdown } from "@/utils";
 import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
@@ -31,8 +31,10 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
     );
   }
 
-  const { id, title, content, publishedDate, featuredImage, categories } =
+  let { id, title, content, publishedDate, featuredImage, categories } =
     newsArticle;
+
+  content = removeMarkdown(content);
 
   const CONTENT_PREVIEW_LENGTH = 145;
   const REDIREDT_URL = `${process.env.NEXT_PUBLIC_URL}/article/${id}`;
