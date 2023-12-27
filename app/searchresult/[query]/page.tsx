@@ -57,7 +57,7 @@ export default async function CategoryPage({ params }: PageProps) {
             {params.query}
           </h1>
           <div className="w-full border-b-2 border-gray-700" />
-          <section className="flex flex-col gap-6">
+          <section className="w-full flex flex-col gap-6">
             {articles.map((article) => (
               <LongArticle key={article.id} newsArticle={article} />
             ))}
