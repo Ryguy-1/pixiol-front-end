@@ -11,16 +11,7 @@ export function extractContentfulCategoryInformation(
 
   const id: string = sys.id as string;
   const title: string = fields.title as string;
-  let content: string = "";
-  for (const contentNode of (fields.content as any).content) {
-    if (contentNode.nodeType !== "paragraph") continue;
-    for (const contentNodeChild of contentNode.content) {
-      if (contentNodeChild.nodeType !== "text") continue;
-      content += contentNodeChild.value;
-      content += " ";
-    }
-    content += "\n";
-  }
+  let content: string = fields.content as string;
   const imageUrl: string = ("https:" +
     (fields.featuredImage as any).fields.file.url) as string;
   const publishDateStr = new Date(fields.publishedDate as string)
@@ -48,8 +39,9 @@ export function extractContentfulCategoryInformation(
 }
 
 function estimateReadingTime(text: string): number {
+  if (!text) return 0;
   const wordsPerMinute = 200;
-  const words = text.split(/\s+/).length;
+  const words = text.split(" ").length;
   const minutes = words / wordsPerMinute;
   return Math.ceil(minutes);
 }
