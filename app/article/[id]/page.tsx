@@ -28,11 +28,14 @@ export async function generateMetadata(
   }
 
   const MAX_DESCRIPTION_LENGTH = 100;
+  const sliced_description = article.content
+    ? article.content.slice(0, MAX_DESCRIPTION_LENGTH)
+    : "";
 
   return {
     ...parentMetadata,
     title: article.title,
-    description: article.content.slice(0, MAX_DESCRIPTION_LENGTH),
+    description: sliced_description,
     keywords: [
       ...article.categories.map((c) => c.title),
       ...(parentMetadata.keywords as string[]),
@@ -40,7 +43,7 @@ export async function generateMetadata(
     openGraph: {
       ...parentMetadata.openGraph,
       title: article.title,
-      description: article.content.slice(0, MAX_DESCRIPTION_LENGTH),
+      description: sliced_description,
       url: `${process.env.NEXT_PUBLIC_URL}/article/${params.id}`,
       images: [
         {
