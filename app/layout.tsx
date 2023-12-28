@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 
-const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // force dynamic route
 
 const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
