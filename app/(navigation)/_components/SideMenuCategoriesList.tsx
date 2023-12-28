@@ -11,7 +11,6 @@ const SideMenuCategoriesList: React.FC = () => {
     setIsLoading(true);
     fetch(process.env.NEXT_PUBLIC_URL + "/api/categories", {
       method: "GET",
-      next: { revalidate: 3600 },
     })
       .then((res) => res.json())
       .then((cat) => {
