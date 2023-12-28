@@ -4,8 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 
-export const dynamic = "force-dynamic"; // force dynamic route
-
 const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
   "In-depth articles, news, and analysis on the latest trends in technology and culture. Pixiol uses AI to gather and summarize the latest news around the world.";

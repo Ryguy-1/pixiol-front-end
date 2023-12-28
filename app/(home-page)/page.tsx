@@ -4,6 +4,8 @@ import BigArticle from "../_components/BigArticle";
 import LongArticle from "../_components/LongArticle";
 import CenterColumn from "../_components/CenterColumn";
 
+export const dynamic = "force-dynamic"; // force dynamic route
+
 const HomePage: React.FC = async () => {
   const mostRecentArticles = await fetchMostRecentArticles(30);
 
