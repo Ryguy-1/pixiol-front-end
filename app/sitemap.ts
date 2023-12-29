@@ -3,6 +3,8 @@ import { fetchCategories } from "@/api/categories/serverfunctions";
 import { fetchArticles } from "@/api/articles/serverfunctions";
 import { PersistedCategory, PersistedNewsArticle } from "@/api/data-structures";
 
+export const dynamic = "force-dynamic"; // force dynamic route
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categories: PersistedCategory[] = await fetchCategories();
   const articles: PersistedNewsArticle[] = await fetchArticles();
