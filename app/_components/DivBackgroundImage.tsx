@@ -17,6 +17,8 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({
         src={src}
         alt={alt}
         fill={true}
+        placeholder="blur"
+        loading="lazy"
         style={{
           objectFit: "cover",
           objectPosition: "center",
