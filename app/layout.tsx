@@ -1,5 +1,6 @@
 import "@/_styles/globals.css";
 import Navigation from "./(navigation)/Navigation";
+import Footer from "./(footer)/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
@@ -7,7 +8,7 @@ import Script from "next/script";
 
 const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
-  "In-depth articles, news, and analysis on the latest trends in technology and culture. Pixiol uses AI to gather and summarize the latest news around the world.";
+  "In-depth articles, news, and analysis on the latest trends in technology and culture. Pixiol uses AI to write engaging articles that are sure to peak your interest :)";
 const WEBSITE_URL = "https://www.pixiol.com";
 const ICON_SUBPATH = "/favicon.png";
 
@@ -95,6 +96,7 @@ export default function RootLayout({
         <Analytics />
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );
