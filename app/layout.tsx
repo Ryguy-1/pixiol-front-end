@@ -3,6 +3,7 @@ import Navigation from "./(navigation)/Navigation";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
+import Script from "next/script";
 
 const TITLE = "Pixiol - News for the Modern Era - Ran by AI";
 const DESCRIPTION =
@@ -72,23 +73,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-GZZ51N07FJ"
-        ></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-GZZ51N07FJ');
-          `}
-        </script>
-        <script
+        ></Script>
+        <Script>
+          {
+            "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-GZZ51N07FJ');"
+          }
+        </Script>
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6896213327075440"
           crossOrigin="anonymous"
-        ></script>
+        ></Script>
       </head>
       <body>
         <SpeedInsights />
