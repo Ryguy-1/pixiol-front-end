@@ -74,15 +74,17 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
+          id="google-tag-manager"
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-GZZ51N07FJ"
         ></Script>
-        <Script>
+        <Script id="google-analytics-script">
           {
             "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-GZZ51N07FJ');"
           }
         </Script>
         <Script
+          id="google-verification"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6896213327075440"
           crossOrigin="anonymous"
