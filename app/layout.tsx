@@ -74,6 +74,18 @@ export default function RootLayout({
       <head>
         <script
           async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GZZ51N07FJ"
+        ></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GZZ51N07FJ');
+          `}
+        </script>
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6896213327075440"
           crossOrigin="anonymous"
         ></script>
