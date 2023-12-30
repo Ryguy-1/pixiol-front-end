@@ -112,7 +112,7 @@ export default async function Page({ params }: PageProps) {
           <DivBackgroundImage
             src={`https:${featuredImage.url}`}
             alt={"Featured Image for " + title}
-            className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] rounded-3xl"
+            className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] rounded-xl"
           />
           <div
             className="prose prose-invert prose-xl"
