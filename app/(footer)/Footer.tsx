@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="w-full border-t-[1px] p-16 mt-48">
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-4 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center">
         <p className="italic text-sm">
           - Pixiol is a News site ran 100% by AI. We generate in-depth articles,
           news, and analysis on the latest trends in technology and culture. We
