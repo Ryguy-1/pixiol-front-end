@@ -1,6 +1,7 @@
 import React from "react";
 import { estimateReadingTime, removeMarkdown } from "@/utils";
 import { PersistedNewsArticle } from "@/api/data-structures";
+import DivBackgroundImage from "./DivBackgroundImage";
 import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
@@ -65,9 +66,10 @@ const LongArticle: React.FC<LongArticleProps> = ({ newsArticle }) => {
       </div>
 
       <Link href={REDIREDT_URL} className="md:w-2/6">
-        <div
-          style={{ backgroundImage: `url(${featuredImage.url})` }}
-          className="bg-cover bg-center bg-no-repeat rounded-3xl h-full hidden md:block"
+        <DivBackgroundImage
+          src={`https:${featuredImage.url}`}
+          alt={"Featured Image for " + title}
+          className="rounded-xl h-full hidden md:block"
         />
       </Link>
     </article>

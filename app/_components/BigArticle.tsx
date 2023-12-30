@@ -1,6 +1,7 @@
 import React from "react";
 import { PersistedNewsArticle } from "@/api/data-structures";
 import { estimateReadingTime, removeMarkdown } from "@/utils";
+import DivBackgroundImage from "./DivBackgroundImage";
 import ArticleDuration from "./ArticleDuration";
 import Date from "./Date";
 import ArticleCategoryTag from "./ArticleCategoryTag";
@@ -42,9 +43,10 @@ const BigArticle: React.FC<BigArticleProps> = ({ newsArticle }) => {
   return (
     <article className="flex flex-col gap-2">
       <Link href={REDIREDT_URL}>
-        <div
-          style={{ backgroundImage: `url(${featuredImage.url})` }}
-          className="h-[18rem] bg-cover bg-center bg-no-repeat rounded-3xl"
+        <DivBackgroundImage
+          src={`https:${featuredImage.url}`}
+          alt={"Featured Image for " + title}
+          className="h-[18rem] rounded-xl"
         />
       </Link>
       <Link href={REDIREDT_URL} className="text-4xl font-black hover:underline">

@@ -1,6 +1,7 @@
 import React from "react";
 import Date from "@/_components/Date";
 import { estimateReadingTime, removeMarkdown } from "@/utils";
+import DivBackgroundImage from "@/_components/DivBackgroundImage";
 import ArticleDuration from "@/_components/ArticleDuration";
 import CenterColumn from "@/_components/CenterColumn";
 import { fetchArticleById } from "@/api/articles/serverfunctions";
@@ -108,9 +109,10 @@ export default async function Page({ params }: PageProps) {
               <ArticleCategoryTag key={cat.id} category={cat} />
             ))}
           </div>
-          <div
-            style={{ backgroundImage: `url(${featuredImage.url})` }}
-            className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] bg-cover bg-center bg-no-repeat rounded-3xl"
+          <DivBackgroundImage
+            src={`https:${featuredImage.url}`}
+            alt={"Featured Image for " + title}
+            className="w-full h-[15rem] sm:h-[20rem] md:h-[35rem] rounded-3xl"
           />
           <div
             className="prose prose-invert prose-xl"
