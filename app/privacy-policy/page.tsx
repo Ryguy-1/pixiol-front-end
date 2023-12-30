@@ -10,10 +10,10 @@ const PrivacyPolicy = () => {
         <section>
           <h2 className="text-2xl font-semibold mb-3">Introduction</h2>
           <p>
-            Welcome to Pixiol, a dynamic AI news platform. This privacy policy
+            {`Welcome to Pixiol, a dynamic AI news platform. This privacy policy
             outlines our commitment to protecting your privacy. We adapt our
             practices as technology evolves, and this policy reflects our
-            current practices and any future changes.
+            current practices and any future changes.`}
           </p>
         </section>
 
@@ -22,11 +22,11 @@ const PrivacyPolicy = () => {
             Information We Collect
           </h2>
           <p>
-            At Pixiol, we currently use Google Analytics and AdSense to gather
+            {`At Pixiol, we currently use Google Analytics and AdSense to gather
             information about how visitors use our site. As we grow and evolve,
             we may incorporate additional tools and services that assist us in
             understanding and enhancing user experience, always respecting your
-            privacy.
+            privacy.`}
           </p>
         </section>
 
@@ -35,10 +35,10 @@ const PrivacyPolicy = () => {
             Use of Cookies and Other Technologies
           </h2>
           <p>
-            We use cookies through our current services like Google Analytics
+            {`We use cookies through our current services like Google Analytics
             and AdSense. As we expand our services, we may employ other
             technologies and methods for analytics and advertising purposes,
-            while ensuring transparency and control for our users.
+            while ensuring transparency and control for our users.`}
           </p>
         </section>
 
@@ -47,10 +47,10 @@ const PrivacyPolicy = () => {
             How We Use Your Information
           </h2>
           <p>
-            The information we collect is primarily used to enhance our website
+            {`The information we collect is primarily used to enhance our website
             and understand our audience better. As we integrate new tools, we
             will continue to use data responsibly, focusing on improving user
-            experience and maintaining your privacy.
+            experience and maintaining your privacy.`}
           </p>
         </section>
 
@@ -59,36 +59,36 @@ const PrivacyPolicy = () => {
             Data Protection & Security
           </h2>
           <p>
-            Your data security is paramount. We implement robust measures to
+            {`Your data security is paramount. We implement robust measures to
             safeguard your information and will continue to update our security
-            practices in line with technological advancements and new tools.
+            practices in line with technological advancements and new tools.`}
           </p>
         </section>
 
         <section className="mt-5">
           <h2 className="text-2xl font-semibold mb-3">Your Privacy Rights</h2>
           <p>
-            You have control over your personal information. If you have any
+            {`You have control over your personal information. If you have any
             requests or concerns, especially as we introduce new tools, please
-            feel free to contact us.
+            feel free to contact us.`}
           </p>
         </section>
 
         <section className="mt-5">
           <h2 className="text-2xl font-semibold mb-3">Policy Updates</h2>
           <p>
-            We will update this policy to reflect any new tools or changes in
+            {`We will update this policy to reflect any new tools or changes in
             our data practices. We encourage you to review this policy
-            periodically for the latest information on our privacy practices.
+            periodically for the latest information on our privacy practices.`}
           </p>
         </section>
 
         <section className="mt-5">
           <h2 className="text-2xl font-semibold mb-3">Contact Information</h2>
           <p>
-            For questions about this policy or our privacy practices, please
+            {`For questions about this policy or our privacy practices, please
             contact us. We're committed to resolving any privacy concerns
-            effectively.
+            effectively.`}
           </p>
         </section>
 
@@ -97,9 +97,9 @@ const PrivacyPolicy = () => {
             Compliance and Cooperation
           </h2>
           <p>
-            We adhere to relevant privacy laws and cooperate with regulatory
+            {`We adhere to relevant privacy laws and cooperate with regulatory
             authorities. As new tools are adopted, we will ensure compliance
-            with all applicable regulations and standards.
+            with all applicable regulations and standards.`}
           </p>
         </section>
       </div>
