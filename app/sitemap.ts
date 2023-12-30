@@ -16,6 +16,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "hourly" as const,
       priority: 1,
     },
+    {
+      url: "https://www.pixiol.com/privacy-policy",
+      changeFrequency: "weekly" as const,
+      priority: 0.1,
+    },
     ...categories.map((category) => {
       return {
         url: `https://www.pixiol.com/category/${category.id}`,
