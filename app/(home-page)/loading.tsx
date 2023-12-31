@@ -15,6 +15,8 @@ const SkeletonHomePage: React.FC = () => {
         <section className="flex flex-col gap-10">
           <LongArticle />
           <LongArticle />
+          <LongArticle />
+          <LongArticle />
         </section>
       </CenterColumn>
     </main>

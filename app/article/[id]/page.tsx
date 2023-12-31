@@ -89,10 +89,8 @@ export default async function Page({ params }: PageProps) {
   return (
     <main>
       <CenterColumn maxWidthRem={60}>
-        <div className="flex flex-col items-start gap-5 lg:pt-20">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black">
-            {title}
-          </h1>
+        <div className="flex flex-col items-start gap-5">
+          <h1 className="text-4xl sm:text-6xl font-black">{title}</h1>
           <div className="flex flex-row justify-between w-full">
             <div className="flex flex-row gap-4 flex-wrap">
               <Date dateString={publishedDate} />
