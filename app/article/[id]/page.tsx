@@ -79,7 +79,11 @@ export default async function Page({ params }: PageProps) {
     .use(html)
     .process(content)
     .then((c) => {
-      return c.toString();
+      let contentStr = c.toString();
+      // replace all h1 with h2
+      contentStr = contentStr.replaceAll("<h1>", "<h2>");
+      contentStr = contentStr.replaceAll("</h1>", "</h2>");
+      return contentStr;
     })
     .catch((_) => {
       console.error("Error processing markdown. Defaulting to raw content.");
