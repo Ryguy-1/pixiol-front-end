@@ -20,7 +20,7 @@ Welcome to the official GitHub repository for the Pixiol project! The project ai
 
 ---
 
-👀 Looking for the backend part? Check out Pixiol Backend (2/2) repository for more details on how we manage the AI models and data handling.
+👀 Looking for the backend part? Check out Pixiol Generator (2/2) repository for more details on how we manage the content generation.
 
 🙌 Stay tuned for updates and feel free to contribute or suggest improvements!
 
