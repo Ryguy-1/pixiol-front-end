@@ -5,13 +5,33 @@ import { PersistedCategory } from "@/api/data-structures";
 import { extractContentfulCategoryInformation } from "./utils";
 
 export async function fetchCategories(): Promise<PersistedCategory[]> {
-  const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
-    content_type: "category",
-  });
-  const articleList: PersistedCategory[] = entries.items.map((item) => {
-    return extractContentfulCategoryInformation(item);
-  });
-  return articleList;
+  let skip = 0;
+  const limit = 1000;
+  let categories: PersistedCategory[] = [];
+
+  while (true) {
+    const entries: EntryCollection<ContentfulCategory> =
+      await client.getEntries({
+        content_type: "category",
+        limit: limit,
+        skip: skip,
+      });
+
+    if (entries.items.length === 0) {
+      break;
+    }
+
+    categories = [
+      ...categories,
+      ...entries.items.map((item) =>
+        extractContentfulCategoryInformation(item)
+      ),
+    ];
+
+    skip += limit;
+  }
+
+  return categories;
 }
 
 export async function fetchCategoryById(
