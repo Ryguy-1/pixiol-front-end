@@ -57,13 +57,15 @@ export async function fetchMostRecentArticles(
 
 export async function fetchArticlesByCategory(
   categoryId: string,
-  limit?: number
+  limit?: number,
+  skip?: number
 ): Promise<PersistedNewsArticle[]> {
   const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "newsArticle",
     "fields.categories.sys.id": categoryId,
     order: ["-sys.createdAt"],
     limit: limit,
+    skip: skip,
   });
   const articleList: PersistedNewsArticle[] = entries.items.map((item) => {
     return extractContentfulCategoryInformation(item);
@@ -73,13 +75,15 @@ export async function fetchArticlesByCategory(
 
 export async function fetchArticlesBySearch(
   query: string,
-  limit?: number
+  limit?: number,
+  skip?: number
 ): Promise<PersistedNewsArticle[]> {
   const entries: EntryCollection<ContentfulCategory> = await client.getEntries({
     content_type: "newsArticle",
     query,
     order: ["-sys.createdAt"],
     limit: limit,
+    skip: skip,
   });
   const articleList: PersistedNewsArticle[] = entries.items.map((item) => {
     return extractContentfulCategoryInformation(item);
