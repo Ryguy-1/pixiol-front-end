@@ -37,7 +37,7 @@ const Search: React.FC = () => {
     };
     const handleEnter = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
-        router.push(`${process.env.NEXT_PUBLIC_URL}/searchresult/${text}`);
+        router.push(`${process.env.NEXT_PUBLIC_URL}/searchresult/${text}/0`);
         setIsOpen(false);
       }
     };
