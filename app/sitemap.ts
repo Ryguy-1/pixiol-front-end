@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...categories.map((category) => {
       return {
-        url: `https://www.pixiol.com/category/${category.id}`,
+        url: `https://www.pixiol.com/category/${category.id}/0`,
         changeFrequency: "hourly" as const,
         priority: 0.3,
       };
