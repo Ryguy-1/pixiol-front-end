@@ -78,6 +78,8 @@ export default async function CategoryPage({ params }: PageProps) {
           <PaginationButtons
             currentSkip={parseInt(params.skip)}
             skipIncrement={SKIP_INCREMENT}
+            isRenderLeft={parseInt(params.skip) !== 0}
+            isRenderRight={articles.length === 15}
           />
         </div>
       </CenterColumn>
